@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <!-- Log In -->
   <section class="my-container mt-5 d-flex">
     <div class="container-img">
       <img src="./assets/img-login.png" alt="Cadastro Icon" width="200px">
@@ -28,7 +29,33 @@
       </div>
     </div>
   </section>
-    
+  <!-- Sign Up -->
+  <section class="section-dois container mt-3 p-3">
+    <h1 class="text-center">Cadastre-se agora</h1>
+    <p class="text-center">Tenha acesso a milhares de vagas em um só lugar</p>
+    <div class="container w-50 rounded ps-5 pe-5 pt-4" style="background-color: white;">
+      <form class="form-cadastro">
+        <label for="tipo-usuario">Tipo de usuário*</label>
+        <select name="tipo-usuario" id="tipo-usuario" required>
+          <option value="candidato">Candidato</option>
+          <option value="recrutador">Recrutador</option>
+        </select>
+        <label for="nome">Nome completo*</label>
+        <input id="nome" type="text" placeholder="Exemplo: João da Silva" class="form-control" required>
+        <label for="date">Data de nascimento*</label>
+        <input id="date" type="date" class="form-control" required>
+        <label for="email">Email*</label>
+        <input id="email" type="email" placeholder="Digite seu email" class="form-control" required>
+        <label for="senha">Senha*</label>
+        <input id="senha" type="password" placeholder="Digite sua senha" class="form-control" required>
+        <button type="submit" class="form-control">Criar conta</button>
+      </form>
+      <div class="text-center my-div">
+        <span>Já possui uma conta?</span>
+        <a href="#">Acesse agora</a>
+      </div>
+    </div>
+  </section>
   <script src="./js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

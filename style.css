@@ -23,6 +23,7 @@
     --hover-card: rgba(111, 108, 144, 0.15);
 }
 
+
 *{
   box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
@@ -51,6 +52,7 @@ h1{
     line-height: 2.875rem;
 }
 
+/* ========= Section 1 Log In ========= */
 .my-container {
   height: 90vh;
 }
@@ -144,4 +146,77 @@ h1{
   background-repeat: no-repeat;
   background-position: 18.8rem;
   background-size: 18px;
+}
+
+/* ========= Section 2 Sign Up ========= */
+.section-dois h1 {
+  color: var(--cor-texto-primaria);
+  font-weight: 700;
+}
+
+.section-dois p {
+  color: var(--cor-muted);
+}
+
+.form-cadastro {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-cadastro label:first-child, select {
+  width: 100%;
+}
+
+.form-cadastro label {
+  margin-bottom: 6px;
+  color: var(--cor-texto-primaria);
+  font-weight: 700;
+}
+
+.form-cadastro label:nth-child(n+2){
+  margin-top: 15px;
+}
+
+.form-cadastro input, select, option {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  border: 0.8px solid #ccc;
+}
+
+.form-cadastro button {
+  padding: 10px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--cor-btn-primaria);
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+  transition: 0.4s;
+  font-weight: 700;
+}
+
+.form-cadastro button:hover {
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.my-div span {
+  display: block;
+  text-align: center;
+  color: var(--cor-muted);
+}
+
+.my-div a {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.my-div a:hover {
+  color: var(--cor-texto-primaria);
 }
