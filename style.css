@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+:root{
+    /* CORES */
+
+    --cor-btn-primaria: #4A3AFF;
+    --cor-btn-secundaria: #FE6663;
+    --cor-texto-primaria: #170F49;
+    --cor-muted: #6F6C90;
+    --cor-btn-muted-light: #CCCCCC;
+
+     /* SOMBRAS */
+
+    --sombra-btn: 0px 8px 22px rgba(74, 58, 255, 0.26);
+    --sombra-card: 0px 2px 6px rgba(19, 18, 66, 0.07);
+    --sombra-container: 0px 54px 54px rgba(74, 58, 255, 0.02), 1px 4px 104px rgba(20, 20, 43, 0.04), 0px 98px 66px rgba(19, 18, 66, 0.02);
+    
+    /* BORDA */
+    --borda-card: 1px solid #EFF0F7;
+    --borda-container: 34px;
+    
+    /* HOVER */
+    --hover-card: rgba(111, 108, 144, 0.15);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul, li{
+    list-style-type: none;
+}
+
+p{
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+}
+
+h2{
+    font-size: 1.5rem;
+    line-height: 1.625rem;
+}
+
+h1{
+    font-size: 2.125rem;
+    line-height: 2.875rem;
+}
+
+.aa{
+    box-shadow: var(--sombra-primaria)
+}
