@@ -26,7 +26,7 @@ function mudarModalCadastro() {
     cadastroModal.classList.toggle("hidden");
 };
 
-// CADASTRO
+// CADASTRO USUARIO
 class Usuario {
     id;
     tipo;
@@ -95,3 +95,69 @@ async function fazerLogin(event) {
     }
   })
 }
+
+
+// CADASTRAR VAGA
+class Vaga {
+  id;
+  titulo;
+  descricao;
+  remuneracao;
+  candidatos = []; // lista de candidatos na vaga
+
+  constructor(titulo, descricao, remuneracao, candidatos) {
+      this.titulo = titulo;
+      this.descricao = descricao;
+      this.remuneracao = remuneracao;
+      this.candidatos = candidatos;
+  }
+
+
+}
+
+
+const cadastrarNovaVaga = async (event) => {
+  event.preventDefault();
+
+  const tituloDaVaga = document.getElementById("titulo-vaga");
+  const descricaoDaVaga = document.getElementById("vaga-descricao");
+  const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
+
+  const novaVaga = new Vaga(
+      tituloDaVaga.value,
+      descricaoDaVaga.value,
+      remuneracaoDaVaga.value
+  )
+  
+  try {
+      await axios.post(`${URL_VAGAS}`, novaVaga);
+      console.log("Vaga Cadastrada com sucesso!");
+  }
+  catch (error) {
+      console.log("Deu ruim! ", error);
+  }
+}
+
+
+/*
+const deletarVaga = async (event) => {
+  event.preventDefault();
+
+  const tituloDaVaga = document.getElementById("titulo-vaga");
+  const descricaoDaVaga = document.getElementById("vaga-descricao");
+  const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
+
+  const vaga = (
+      tituloDaVaga.value,
+      descricaoDaVaga.value,
+      remuneracaoDaVaga.value
+  )
+  
+  try {
+      await axios.delete(`${URL_VAGAS}`, vaga);
+      console.log("Vaga Deletada com sucesso!");
+  }
+  catch (error) {
+      console.log("Deu ruim! ", error);
+  }
+} */

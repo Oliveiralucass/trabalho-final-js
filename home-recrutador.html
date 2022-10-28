@@ -36,7 +36,7 @@
     </section>
 
         <!-- cadastrar vaga  -->
-     <section class="section-dois container mt-3 p-3 hidden" id="section-rec-2" style="background-color: lightblue;">
+     <section class="section-dois container mt-3 p-3" id="section-rec-2" style="background-color: lightblue;">
         <h1 class="text-center-cadastra-vaga">Cadastra vaga</h1>
         <div class="container w-50 rounded-4 ps-5 pe-5 pt-4 cadastra-vaga-padding" style="background-color: white;">
           <form class="form-cadastro">
@@ -46,8 +46,8 @@
             <label for="vaga-descricao">Descrição da vaga:</label>
             <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control" required>
             <label for="vaga-remuneracao">Remuneração inicial:</label>
-            <input id="vaga-remuneracao" type="email" placeholder="Exemplo: R$ 5000" class="form-control" required>
-            <button type="submit" class="form-control mt-4">Criar vaga</button>
+            <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control" required>
+            <button type="submit" class="form-control mt-4" onclick="cadastrarNovaVaga(event)">Criar vaga</button>
           </form>
         </div>
       </section>
@@ -55,7 +55,7 @@
     <!-- tela vaga recrutador -->
     <section
     id="section-rec-3"
-      class="section-dois container mt-3 p-3 hidden"
+      class="section-dois container mt-3 p-3"
       style="background-color: lightyellow"
     >
       <div
@@ -96,11 +96,12 @@
             Reprovar
           </button>
         </div>
-        <button type="submit" onclick="" class="button-recrutador-exclui-vaga">
+        <button type="submit" onclick="deletarVaga(event)" class="button-recrutador-exclui-vaga">
           Excluir vaga
         </button>
       </div>
     </section>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

@@ -55,5 +55,12 @@
       "id": 6
     }
   ],
-  "vagas": []
+  "vagas": [
+    {
+      "titulo": "Titulo teste",
+      "descricao": "descrição teste",
+      "remuneracao": "5000",
+      "id": 1
+    }
+  ]
 }
