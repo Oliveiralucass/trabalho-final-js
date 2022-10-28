@@ -331,7 +331,7 @@ option {
 .barra-nome-data {
   margin-top: 15px;
   display: flex;
-  gap:30%;
+  gap: 30%;
   width: 100%;
   border-radius: 46px;
   padding-top: 15px;
@@ -340,11 +340,12 @@ option {
   background-color: white;
   box-shadow: var(--sombra-card);
 }
-.nome-tela-recrutador,.data-de-nascimento{
-  margin-left:  20px;
+.nome-tela-recrutador,
+.data-de-nascimento {
+  margin-left: 20px;
 }
 
-.button-aprovado-cadastrar-vaga{
+.button-aprovado-cadastrar-vaga {
   width: 10%;
   margin-left: 20px;
   border-radius: 20px;
@@ -354,12 +355,12 @@ option {
   box-shadow: var(--sombra-btn);
   transition: 0.4s;
   font-weight: 700;
-} 
-.button-aprovado-cadastrar-vaga:hover{
-     background-color: var(--cor-btn-muted-light);
+}
+.button-aprovado-cadastrar-vaga:hover {
+  background-color: var(--cor-btn-muted-light);
 }
 
-.button-recrutador-exclui-vaga{
+.button-recrutador-exclui-vaga {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
@@ -375,3 +376,65 @@ option {
   font-weight: 700;
   gap: 63px;
 }
+
+/* ========= cadastra-vaga-candidato-nao-cadastrado ========= */
+
+.nome-data-candidato-nao-candidatado {
+  padding-right: 23px;
+  padding-left: 23px;
+  padding-top: 15px;
+  display: flex;
+  align-content: space-between;
+  gap: 75%;
+}
+
+.barra-nome-data-candidato-nao-cadastrado {
+  margin-top: 15px;
+  display: flex;
+  gap: 72%;
+  width: 100%;
+  padding-right: -4%;
+  border-radius: 46px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: var(--borda-card);
+  background-color: white;
+  box-shadow: var(--sombra-card);
+}
+/* ========= cadastra-vaga-candidato-cadastrado ========= */
+.button-recrutador-exclui-vaga-candidato-cadastrado{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px 0px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--cor-btn-secundaria);
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+  transition: 0.4s;
+  font-weight: 700;
+  gap: 63px;
+}
+
+/* ========= cadastra-vaga-candidato-reprovado ========= */
+
+.button-recrutador-exclui-vaga-candidato-reprovado{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px 0px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(rgba(111, 108, 144, 1));
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+  transition: 0.4s;
+  font-weight: 700;
+  gap: 63px;
+}
+
