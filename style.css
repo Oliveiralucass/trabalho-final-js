@@ -328,29 +328,25 @@ option {
   gap: 26px;
 }
 
-/* .barra-nome-data {
+.barra-nome-data {
   margin-top: 15px;
-  cursor: pointer;
   display: flex;
-  gap: 30%;
-
+  gap:30%;
   width: 100%;
   border-radius: 46px;
-  padding-left: 85px;
-  padding-right: 75px;
   padding-top: 15px;
   padding-bottom: 15px;
   border: var(--borda-card);
   background-color: white;
   box-shadow: var(--sombra-card);
 }
-
+.nome-tela-recrutador,.data-de-nascimento{
+  margin-left:  20px;
+}
 
 .button-aprovado-cadastrar-vaga{
-  width: 50%;
-  padding: 5px 15px;
-  margin-top: 25px;
-  margin-bottom: 15px;
+  width: 10%;
+  margin-left: 20px;
   border-radius: 20px;
   border: none;
   background-color: var(--cor-btn-secundaria);
@@ -358,5 +354,24 @@ option {
   box-shadow: var(--sombra-btn);
   transition: 0.4s;
   font-weight: 700;
+} 
+.button-aprovado-cadastrar-vaga:hover{
+     background-color: var(--cor-btn-muted-light);
+}
+
+.button-recrutador-exclui-vaga{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 10px 0px;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--cor-btn-primaria);
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+  transition: 0.4s;
+  font-weight: 700;
   gap: 63px;
-} */
+}
