@@ -19,17 +19,17 @@
         <h1>Entre na sua conta</h1>
         <form class="form">
           <div class="user form-control">
-            <input id="login-email" type="email" placeholder="Email" required>
+            <input id="login-email" type="email" placeholder="Email" >
             <img src="./assets/user.svg" alt="User Icon">
           </div>
           <div class="lock form-control">
-            <input id="login-senha" type="password" placeholder="Senha" required>
+            <input id="login-senha" type="password" placeholder="Senha" >
             <img src="./assets/lock.svg" alt="Lock Icon">
           </div>
-          <button id="login-enviar" type="submit" class="form-control" onclick="fazerLogin()">Log in</button>
+          <button id="login-enviar" type="submit" class="form-control" onclick="fazerLogin(event)">Log in</button>
           <div>
             <span>Novo por aqui?</span>
-            <a id="cadastrar-agora" href="#">Cadastre-se agora</a>
+            <a id="cadastrar-agora" onclick="mudarModalCadastro()" href="#">Cadastre-se agora</a>
           </div>
         </form>
       </div>
@@ -59,7 +59,7 @@
       </form>
       <div class="text-center my-div">
         <span>Já possui uma conta?</span>
-        <a id="acessar-agora" href="#">Acesse agora</a>
+        <a id="acessar-agora" onclick="mudarModalCadastro()" href="#">Acesse agora</a>
       </div>
     </div>
   </section>
