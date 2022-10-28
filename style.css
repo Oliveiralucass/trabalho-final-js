@@ -233,7 +233,7 @@ option {
 }
 .button-recrutador-cadastrar-vaga {
   width: 50%;
-  padding: 20px 0px;
+  padding: 10px 0px;
   margin-top: 25px;
   margin-bottom: 15px;
   border-radius: 20px;
@@ -272,4 +272,17 @@ option {
 .button-vagas-home-recrutador:hover{
   opacity: 0.8;
   transition: 0.4s;
+}
+
+
+/* ========= cadastra-vaga ========= */
+
+.text-center-cadastra-vaga{
+  padding: 10px;
+  margin-bottom: 37px;
+  text-align: center;
+}
+
+.cadastra-vaga-padding{
+  padding-bottom: 35px;
 }
