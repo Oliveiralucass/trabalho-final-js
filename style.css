@@ -267,22 +267,96 @@ option {
   box-shadow: var(--sombra-card);
 }
 .button-vagas:hover {
-  background-color:  var(--hover-card);
+  background-color: var(--hover-card);
 }
-.button-vagas-home-recrutador:hover{
+.button-vagas-home-recrutador:hover {
   opacity: 0.8;
   transition: 0.4s;
 }
 
+/* ========= cadastra-vaga-recrutador ========= */
 
-/* ========= cadastra-vaga ========= */
-
-.text-center-cadastra-vaga{
+.text-center-cadastra-vaga {
   padding: 10px;
   margin-bottom: 37px;
   text-align: center;
 }
 
-.cadastra-vaga-padding{
+.cadastra-vaga-padding {
   padding-bottom: 35px;
 }
+
+/* ======== tela de vaga - recrutador ======== */
+.header-card {
+  display: flex;
+  align-content: space-between;
+  gap: 62%;
+  padding-left: 23px;
+  padding-right: 9px;
+}
+
+.section-titulo-descricao {
+  padding-left: 23px;
+  margin-top: 20px;
+}
+
+.descricao-vaga-recrutador {
+  padding-top: 15px;
+  padding-right: 5px;
+}
+
+.titulo-candidatos-recrutador {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 24px;
+}
+.nome-data-recrutador {
+  padding-right: 23px;
+  padding-left: 23px;
+  padding-top: 15px;
+  display: flex;
+  align-content: space-between;
+  gap: 35%;
+}
+
+.nome-pessoa-tela-vaga-recrutador {
+  background-color: #4a3aff;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* .barra-nome-data {
+  margin-top: 15px;
+  cursor: pointer;
+  display: flex;
+  gap: 30%;
+
+  width: 100%;
+  border-radius: 46px;
+  padding-left: 85px;
+  padding-right: 75px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: var(--borda-card);
+  background-color: white;
+  box-shadow: var(--sombra-card);
+}
+
+
+.button-aprovado-cadastrar-vaga{
+  width: 50%;
+  padding: 5px 15px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--cor-btn-secundaria);
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+  transition: 0.4s;
+  font-weight: 700;
+  gap: 63px;
+} */
