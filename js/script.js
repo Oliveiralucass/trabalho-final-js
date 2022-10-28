@@ -1,15 +1,15 @@
 
 // Projeto Final do Módulo JavaScript Vem Ser 10
 
-const cadastrarAgora = document.getElementById("cadastrarAgora")
-const acessarAgora = document.getElementById("acessarAgora")
-const cadastroModal = document.getElementById("cadastroModal")
-const loginTela = document.getElementById("loginTela")
+const cadastrarAgora = document.getElementById("cadastrar-agora")
+const acessarAgora = document.getElementById("acessar-agora")
+const cadastroModal = document.getElementById("cadastro-modal")
+const loginTela = document.getElementById("login-tela")
 
-const loginEmail = document.getElementById("loginEmail")
-const loginSenha = document.getElementById("loginSenha")
-const loginEnviar = document.getElementById("loginEnviar")
-const cadastroEnviar = document.getElementById("cadastroEnviar")
+const loginEmail = document.getElementById("login-email")
+const loginSenha = document.getElementById("login-senha")
+const loginEnviar = document.getElementById("login-enviar")
+const cadastroEnviar = document.getElementById("cadastro-enviar")
 
 const baseDeUsuarios = []
 
@@ -34,11 +34,11 @@ function dataStringParaDate(dateString) {
     return data;
 };
 function cadastrarUsuario(){
-    const tipoUsuario = document.getElementById("tipoUsuario");
-    const cadastroNome = document.getElementById("cadastroNome");
-    const cadastroDate = document.getElementById("cadastroDate");
-    const cadastroEmail = document.getElementById("cadastroEmail");
-    const cadastroSenha = document.getElementById("cadastroSenha");
+    const tipoUsuario = document.getElementById("tipo-usuario");
+    const cadastroNome = document.getElementById("cadastro-nome");
+    const cadastroDate = document.getElementById("cadastro-date");
+    const cadastroEmail = document.getElementById("cadastro-email");
+    const cadastroSenha = document.getElementById("cadastro-senha");
 
     baseDeUsuarios.push({
         tipo: tipoUsuario.value,
