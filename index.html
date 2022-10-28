@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- Log In -->
-  <section class="my-container mt-5 d-flex">
+  <section class="my-container mt-5 d-flex" id="loginTela">
     <div class="container-img">
       <img src="./assets/img-login.png" alt="Cadastro Icon" width="200px">
     </div>
@@ -19,46 +19,47 @@
         <h1>Entre na sua conta</h1>
         <form class="form">
           <div class="user form-control">
-            <input type="email" placeholder="Email" required>
+            <input id="loginEmail" type="email" placeholder="Email" required>
             <img src="./assets/user.svg" alt="User Icon">
           </div>
           <div class="lock form-control">
-            <input type="password" placeholder="Senha" required>
+            <input id="loginSenha" type="password" placeholder="Senha" required>
             <img src="./assets/lock.svg" alt="Lock Icon">
           </div>
-          <button type="submit" class="form-control">Log in</button>
+          <button id="loginEnviar" type="submit" class="form-control">Log in</button>
           <div>
             <span>Novo por aqui?</span>
-            <a href="#">Cadastre-se agora</a>
+            <a id="cadastrarAgora" href="#">Cadastre-se agora</a>
           </div>
         </form>
       </div>
     </div>
   </section>
+
   <!-- Sign Up -->
-  <section class="section-dois container mt-3 p-3">
+  <section class="section-dois container mt-3 p-3 hidden" id="cadastroModal">
     <h1 class="text-center">Cadastre-se agora</h1>
     <p class="text-center">Tenha acesso a milhares de vagas em um só lugar</p>
     <div class="container w-50 rounded ps-5 pe-5 pt-4" style="background-color: white;">
       <form class="form-cadastro">
         <label for="tipo-usuario">Tipo de usuário*</label>
-        <select name="tipo-usuario" id="tipo-usuario" required>
+        <select name="tipo-usuario" id="tipoUsuario" required>
           <option value="candidato">Candidato</option>
           <option value="recrutador">Recrutador</option>
         </select>
         <label for="nome">Nome completo*</label>
-        <input id="nome" type="text" placeholder="Exemplo: João da Silva" class="form-control" required>
+        <input id="cadastroNome" type="text" placeholder="Exemplo: João da Silva" class="form-control" required>
         <label for="date">Data de nascimento*</label>
-        <input id="date" type="date" class="form-control" required>
+        <input id="cadastroDate" type="date" class="form-control" required>
         <label for="email">Email*</label>
-        <input id="email" type="email" placeholder="Digite seu email" class="form-control" required>
+        <input id="cadastroEmail" type="email" placeholder="Digite seu email" class="form-control" required>
         <label for="senha">Senha*</label>
-        <input id="senha" type="password" placeholder="Digite sua senha" class="form-control" required>
-        <button type="submit" class="form-control">Criar conta</button>
+        <input id="cadastroSenha" type="password" placeholder="Digite sua senha" class="form-control" required>
+        <button id="cadastroEnviar" type="submit" class="form-control">Criar conta</button>
       </form>
       <div class="text-center my-div">
         <span>Já possui uma conta?</span>
-        <a href="#">Acesse agora</a>
+        <a id="acessarAgora" href="#">Acesse agora</a>
       </div>
     </div>
   </section>
