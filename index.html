@@ -26,7 +26,7 @@
             <input id="login-senha" type="password" placeholder="Senha" required>
             <img src="./assets/lock.svg" alt="Lock Icon">
           </div>
-          <button id="login-enviar" type="submit" class="form-control">Log in</button>
+          <button id="login-enviar" type="submit" class="form-control" onclick="fazerLogin()">Log in</button>
           <div>
             <span>Novo por aqui?</span>
             <a id="cadastrar-agora" href="#">Cadastre-se agora</a>
@@ -43,19 +43,19 @@
     <div class="container w-50 rounded ps-5 pe-5 pt-4" style="background-color: white;">
       <form class="form-cadastro">
         <label for="tipo-usuario">Tipo de usuário*</label>
-        <select name="tipo-usuario" id="tipo-usuario" required>
+        <select name="tipo-usuario" id="tipo-usuario" >
           <option value="candidato">Candidato</option>
           <option value="recrutador">Recrutador</option>
         </select>
         <label for="nome">Nome completo*</label>
-        <input id="cadastro-nome" type="text" placeholder="Exemplo: João da Silva" class="form-control" required>
+        <input id="cadastro-nome" type="text" placeholder="Exemplo: João da Silva" class="form-control" >
         <label for="date">Data de nascimento*</label>
-        <input id="cadastro-date" type="date" class="form-control" required>
+        <input id="cadastro-date" type="date" class="form-control" >
         <label for="email">Email*</label>
-        <input id="cadastro-email" type="email" placeholder="Digite seu email" class="form-control" required>
+        <input id="cadastro-email" type="email" placeholder="Digite seu email" class="form-control" >
         <label for="senha">Senha*</label>
-        <input id="cadastro-senha" type="password" placeholder="Digite sua senha" class="form-control" required>
-        <button id="cadastro-enviar" type="submit" class="form-control">Criar conta</button>
+        <input id="cadastro-senha" type="password" placeholder="Digite sua senha" class="form-control" >
+        <button id="cadastro-enviar" type="submit" onclick="cadastrarUsuario(event)" class="form-control">Criar conta</button>
       </form>
       <div class="text-center my-div">
         <span>Já possui uma conta?</span>
@@ -63,6 +63,7 @@
       </div>
     </div>
   </section>
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script src="./js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

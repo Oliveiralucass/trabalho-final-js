@@ -1,0 +1,41 @@
+{
+  "usuarios": [
+    {
+      "tipo": "recrutador",
+      "nomeCompleto": "fasdfasdfa",
+      "dataDeNascimento": "2022-11-03T03:00:00.000Z",
+      "email": "gf.oliveiralucas@gmail.com",
+      "senha": "fasdfasdfsa",
+      "candidaturas": [],
+      "id": 1
+    },
+    {
+      "tipo": "candidato",
+      "nomeCompleto": "",
+      "dataDeNascimento": null,
+      "email": "",
+      "senha": "",
+      "candidaturas": [],
+      "id": 2
+    },
+    {
+      "tipo": "recrutador",
+      "nomeCompleto": "afsdffa",
+      "dataDeNascimento": "2022-11-02T03:00:00.000Z",
+      "email": "gf.oliveiralucas@gmail.com",
+      "senha": "fasdfasd",
+      "candidaturas": [],
+      "id": 3
+    },
+    {
+      "tipo": "recrutador",
+      "nomeCompleto": "fasdfa",
+      "dataDeNascimento": "2022-11-05T03:00:00.000Z",
+      "email": "gf.oliveiralucas@gmail.com",
+      "senha": "fasdfasdfa",
+      "candidaturas": [],
+      "id": 4
+    }
+  ],
+  "vagas": []
+}

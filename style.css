@@ -104,6 +104,7 @@ h1 {
 .form input {
   border: none;
   outline: none;
+  width: 90%;
 }
 
 .form button {
