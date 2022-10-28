@@ -53,6 +53,13 @@ h1 {
   line-height: 2.875rem;
 }
 
+.hidden{
+  display: none;
+}
+.blur {
+  filter: blur(1rem);
+}
+
 /* ========= Section 1 Log In ========= */
 .my-container {
   height: 90vh;
@@ -146,6 +153,12 @@ a {
 }
 
 /* ========= Section 2 Sign Up ========= */
+.section-dois{
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
 .section-dois h1 {
   color: var(--cor-texto-primaria);
   font-weight: 700;
