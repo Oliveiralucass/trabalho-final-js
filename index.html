@@ -18,8 +18,14 @@
       <div class="login">
         <h1>Entre na sua conta</h1>
         <form class="form">
-          <input type="email" placeholder="Email" class="form-control user" required>
-          <input type="password" placeholder="Senha" class="form-control lock" required>
+          <div class="user form-control">
+            <input type="email" placeholder="Email" required>
+            <img src="./assets/user.svg" alt="User Icon">
+          </div>
+          <div class="lock form-control">
+            <input type="password" placeholder="Senha" required>
+            <img src="./assets/lock.svg" alt="Lock Icon">
+          </div>
           <button type="submit" class="form-control">Log in</button>
           <div>
             <span>Novo por aqui?</span>
