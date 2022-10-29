@@ -43,6 +43,48 @@
         </div>
       </section>
 
+
+    <!-- Modal detalhes vaga recrutador -->
+    <section
+    id="section-rec-3"
+      class="section-dois container mt-3 p-3 hidden">
+      <div
+        class="container w-75 rounded-4 padding-home-recrutador pt-4"
+        style="background-color: white">
+        <div class="header-card">
+          <div id="id-vaga"></div>
+          <div id="salario-vaga"></div>
+        </div>
+        <div class="section-titulo-descricao">
+          <div id="titulo-vaga-recrutador"></div>
+          <div id="descricao-vaga-recrutador" class="descricao-vaga-recrutador"></div>
+        </div>
+        <div class="titulo-candidatos-recrutador">
+          <b>Candidatos inscritos nas vagas</b>
+        </div>
+        <div class="nome-data-recrutador">
+          <div class="nome-categoria"><b>Nome</b></div>
+          <div><b>Data de Nascimento</b></div>
+        </div>
+        <div id="" class="barra-nome-data">
+          <div class="nome-tela-recrutador" id="nome-vaga">João da Silva</div>
+          <div class="data-de-nascimento" id="date-nascimento">01/10/2022</div>
+          <button class="button-aprovado-cadastrar-vaga" onclick="">
+            Reprovar
+          </button>
+        </div>
+        <div class="barra-nome-data">
+          <div class="nome-tela-recrutador" id="nome-vaga">João da Silva</div>
+          <div class="data-de-nascimento" id="date-nascimento">01/10/2022</div>
+          <button class="button-aprovado-cadastrar-vaga" onclick="">
+            Reprovar
+          </button>
+        </div>
+        <button type="submit" onclick="deletarVaga(event)" class="button-recrutador-exclui-vaga">
+          Excluir vaga
+        </button>
+      </div>
+    </section>
     <script src="../node_modules/axios/dist/axios.min.js"></script>
     <script src="../js/script.js"></script>
   </body>

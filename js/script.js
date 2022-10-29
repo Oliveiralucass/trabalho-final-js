@@ -31,6 +31,11 @@ function mudarModalCadastrarVagas() {
   sectionRecDois.classList.toggle("hidden");
 };
 
+function mudarModalDetalhesVagas() {
+  sectionRecUm.classList.toggle("blur");
+  sectionRecTres.classList.toggle('hidden')
+}
+
 // CADASTRO USUARIO
 class Usuario {
   id;
@@ -146,29 +151,91 @@ const exibirTodasAsVagas = async () => {
   let vagas;
   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
-  console.log(this.users.id)
-  const divPai = document.querySelector('.button-vagas-home-recrutador');
   vagas.map((vaga) => {
-    
-    divPai.innerHTML += `<a href="./vaga-candidato.html?vaga=${vaga.id}"><div class="button-vagas"><div>${vaga.titulo}</div> <div>${vaga.remuneracao}</div></div></a>`;
+    const divPai = document.querySelector('.button-vagas-home-recrutador');
+    const divButtonVagas = document.createElement('div');
+    divButtonVagas.setAttribute('class', 'button-vagas');
+    divButtonVagas.setAttribute('onclick', `detalhesVaga(${vaga.id})`);
+    const divFilhaUm = document.createElement('div');
+    const divFilhaDois = document.createElement('div');
+  
+    divButtonVagas.appendChild(divFilhaUm);
+    divButtonVagas.appendChild(divFilhaDois);
+    divPai.appendChild(divButtonVagas);
+
+    divFilhaUm.innerText = vaga.titulo;
+    divFilhaDois.innerText = vaga.remuneracao;
   });
 };
 
-const exibirVaga = async () => {
+const detalhesVaga = async (id) => {
   let vagas;
   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
-  let vagaAtual = Number(window.location.search.split('?vaga=')[1])
-  console.log(vagas[vagaAtual - 1])
-  vagas.map((vaga) => {
+  const idVaga = document.getElementById('id-vaga');
+  const salarioVaga = document.getElementById('salario-vaga');
+  const tituloVaga = document.getElementById('titulo-vaga-recrutador');
+  const descricaoVaga = document.getElementById('descricao-vaga-recrutador');
 
-  })
-}
+  vagas.filter((detalhes) => {
+    if(detalhes.id === id){
+      idVaga.innerHTML = `<b>ID da Vaga:</b> ${id}`;
+      salarioVaga.innerHTML = `<b>Remuneração:</b> R$ ${detalhes.remuneracao}`;
+      tituloVaga.innerHTML = `<b>Título:</b> ${detalhes.titulo}`
+      descricaoVaga.innerHTML = `<b>Descrição da vaga:</b> ${detalhes.descricao}`;
+    };
+  });
+
+  function teste () {
+
+  }
+
+  teste()
+  
+  mudarModalDetalhesVagas();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const exibirVaga = async () => {
+//   let vagas;
+//   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+//   let vagaAtual = Number(window.location.search.split('?vaga=')[1])
+//   console.log(vagas[vagaAtual - 1])
+//   vagas.map((vaga) => {
+
+//   })
+// }
 
 if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html"){
   exibirTodasAsVagas();
-} else {
-  exibirVaga()
 }
 
 
