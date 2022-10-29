@@ -24,13 +24,22 @@
       "titulo": "QA Senior CLT",
       "descricao": "Saber mais que o Pedro",
       "remuneracao": "50000",
+      "candidatos": [],
       "id": 1
     },
     {
       "titulo": "Dev Juninho",
       "descricao": "Ter conhecimento de Pleno",
       "remuneracao": "1500",
+      "candidatos": [],
       "id": 2
+    },
+    {
+      "titulo": "Teste",
+      "descricao": "teste constructor",
+      "remuneracao": "500",
+      "candidatos": [],
+      "id": 3
     }
   ]
 }

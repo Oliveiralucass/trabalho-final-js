@@ -92,10 +92,9 @@ async function fazerLogin(event) {
   const loginSenha = document.getElementById("login-senha")
 
   let users;
-
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
 
-  users.map((element) => {
+  users.map((element) => {  
     if(element.email === loginEmail.value && element.senha === loginSenha.value){
       if(element.tipo === 'recrutador'){
         window.location.href = `./pages/home-recrutador.html?recrutador=${element.id}`
@@ -114,11 +113,10 @@ class Vaga {
   remuneracao;
   candidatos = [];
 
-  constructor(titulo, descricao, remuneracao, candidatos) {
+  constructor(titulo, descricao, remuneracao) {
       this.titulo = titulo;
       this.descricao = descricao;
       this.remuneracao = remuneracao;
-      this.candidatos = candidatos;
   }
 }
 
@@ -155,7 +153,7 @@ const exibirTodasAsVagas = async () => {
     const divPai = document.querySelector('.button-vagas-home-recrutador');
     const divButtonVagas = document.createElement('div');
     divButtonVagas.setAttribute('class', 'button-vagas');
-    divButtonVagas.setAttribute('onclick', `detalhesVaga(${vaga.id})`);
+    divButtonVagas.setAttribute('onclick', `detalhesVaga(${vaga.id}); buscarCandidatos(${vaga.id})`);
     const divFilhaUm = document.createElement('div');
     const divFilhaDois = document.createElement('div');
   
@@ -172,10 +170,16 @@ const detalhesVaga = async (id) => {
   let vagas;
   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
+  let users;
+  await axios.get(URL_VAGAS).then((response) => { users = response.data });
+
   const idVaga = document.getElementById('id-vaga');
   const salarioVaga = document.getElementById('salario-vaga');
   const tituloVaga = document.getElementById('titulo-vaga-recrutador');
   const descricaoVaga = document.getElementById('descricao-vaga-recrutador');
+
+  const candidatar = document.getElementById('candidatar');
+  candidatar.setAttribute('onclick', `candidatarVaga(${id})`)
 
   vagas.filter((detalhes) => {
     if(detalhes.id === id){
@@ -186,53 +190,40 @@ const detalhesVaga = async (id) => {
     };
   });
 
-  function teste () {
-
-  }
-
-  teste()
-  
   mudarModalDetalhesVagas();
 };
 
+// Candidatar vaga
+class Candidatura {
+  idVaga;
+  idCandidato;
+  reprovado;
+
+  constructor(reprovado){
+    this.reprovado = reprovado;
+    idVaga = Vaga.id;
+    idCandidato = Usuario.id;
+  };
+};
+
+async function candidatarVaga(id, idUsuario){
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => { users = response.data });
 
 
+}
 
+async function buscarCandidatos(id) {
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
+  vagas.filter((vaga) => {
+    if(vaga.id === id){
 
+    }
+  })
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const exibirVaga = async () => {
-//   let vagas;
-//   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
-
-//   let vagaAtual = Number(window.location.search.split('?vaga=')[1])
-//   console.log(vagas[vagaAtual - 1])
-//   vagas.map((vaga) => {
-
-//   })
-// }
 
 if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html"){
   exibirTodasAsVagas();
