@@ -53,6 +53,15 @@
       "senha": "1234",
       "candidaturas": [],
       "id": 6
+    },
+    {
+      "tipo": "recrutador",
+      "nomeCompleto": "fasd",
+      "dataDeNascimento": null,
+      "email": "123@a.com",
+      "senha": "as",
+      "candidaturas": [],
+      "id": 7
     }
   ],
   "vagas": [

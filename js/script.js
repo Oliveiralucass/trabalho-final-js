@@ -9,6 +9,13 @@ const loginTela = document.getElementById("login-tela")
 const loginEnviar = document.getElementById("login-enviar")
 const cadastroEnviar = document.getElementById("cadastro-enviar")
 
+const urlSearchParams = new URLSearchParams(window.location.search);
+const postId = urlSearchParams.get("candidato");
+
+let users;
+
+
+
 // Telas candidato
 const sectionCandUm = document.getElementById('section-1');
 const sectionCandDois = document.getElementById('section-2');
@@ -75,27 +82,46 @@ async function cadastrarUsuario(event){
     mudarModalCadastro();
 };
 
+
+
+
 async function fazerLogin(event) {
   event.preventDefault();
 
   const loginEmail = document.getElementById("login-email")
   const loginSenha = document.getElementById("login-senha")
 
-  let users;
-
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
 
   users.map((element) => {
     if(element.email === loginEmail.value && element.senha === loginSenha.value){
       if(element.tipo === 'recrutador'){
-        window.location.href = `./home-recrutador.html?=${element.id}`
+        window.location.href = `./pages/home-recrutador.html?recrutador=${element.id}`
       } else {
-        window.location.href = `./home-candidatos.html?=${element.id}`
+        window.location.href = `./pages/home-candidatos.html?cadidato=${element.id}`
       }
     }
   })
 }
 
+// window.addEventListener('load', () => {
+//     async function puxarDB() {
+//         await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+//         console.log(users)
+//     }
+//     puxarDB()
+// })
+
+
+// if(users.id == 3).includes(vaga = "vaga2"){
+//     if(users.canditaura.reprovado){
+//         renderiza tela reprovado
+//     } else {
+//         renderiza tela candidatado
+//     }
+// } else {
+//     renderiza tela nao inscrito
+// }
 
 // CADASTRAR VAGA
 class Vaga {
@@ -114,7 +140,6 @@ class Vaga {
 
 
 }
-
 
 const cadastrarNovaVaga = async (event) => {
   event.preventDefault();
@@ -138,7 +163,6 @@ const cadastrarNovaVaga = async (event) => {
   }
 }
 
-
 /*
 const deletarVaga = async (event) => {
   event.preventDefault();
@@ -161,3 +185,5 @@ const deletarVaga = async (event) => {
       console.log("Deu ruim! ", error);
   }
 } */
+
+
