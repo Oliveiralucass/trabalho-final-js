@@ -2,7 +2,7 @@
   "usuarios": [
     {
       "tipo": "candidato",
-      "nomeCompleto": "Teste",
+      "nomeCompleto": "Teste da silva",
       "dataDeNascimento": "1997-07-10T03:00:00.000Z",
       "email": "teste@gmail.com",
       "senha": "123",
@@ -17,6 +17,15 @@
       "senha": "123",
       "candidaturas": [],
       "id": 2
+    },
+    {
+      "tipo": "candidato",
+      "nomeCompleto": "Teste de pereira",
+      "dataDeNascimento": "1997-07-10T03:00:00.000Z",
+      "email": "teste3@gmail.com",
+      "senha": "123",
+      "candidaturas": [],
+      "id": 3
     }
   ],
   "vagas": [
