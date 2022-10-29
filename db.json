@@ -1,9 +1,9 @@
 {
   "usuarios": [
     {
-      "tipo": "recrutador",
-      "nomeCompleto": "fasdfa",
-      "dataDeNascimento": "2022-11-05T03:00:00.000Z",
+      "tipo": "candidato",
+      "nomeCompleto": "Teste",
+      "dataDeNascimento": "1997-07-10T03:00:00.000Z",
       "email": "teste@gmail.com",
       "senha": "123",
       "candidaturas": [],
@@ -11,65 +11,32 @@
     },
     {
       "tipo": "recrutador",
-      "nomeCompleto": "fasdfasdfa",
-      "dataDeNascimento": "2022-11-03T03:00:00.000Z",
-      "email": "gf.oliveiralucas@gmail.com",
-      "senha": "fasdfasdfsa",
+      "nomeCompleto": "recrutador",
+      "dataDeNascimento": "2022-11-04T03:00:00.000Z",
+      "email": "rec@gmail.com",
+      "senha": "123",
       "candidaturas": [],
       "id": 2
-    },
-    {
-      "tipo": "candidato",
-      "nomeCompleto": "",
-      "dataDeNascimento": null,
-      "email": "teste2@gmail.com",
-      "senha": "234",
-      "candidaturas": [],
-      "id": 3
-    },
-    {
-      "tipo": "recrutador",
-      "nomeCompleto": "afsdffa",
-      "dataDeNascimento": "2022-11-02T03:00:00.000Z",
-      "email": "gf.oliveiralucas@gmail.com",
-      "senha": "fasdfasd",
-      "candidaturas": [],
-      "id": 4
-    },
-    {
-      "tipo": "recrutador",
-      "nomeCompleto": "fasdfa",
-      "dataDeNascimento": "2022-11-05T03:00:00.000Z",
-      "email": "gf.oliveiralucas@gmail.com",
-      "senha": "fasdfasdfa",
-      "candidaturas": [],
-      "id": 5
-    },
-    {
-      "tipo": "recrutador",
-      "nomeCompleto": "dkdkfkdfdkf",
-      "dataDeNascimento": "2022-11-12T03:00:00.000Z",
-      "email": "sdamlsaldm@gmail.com",
-      "senha": "1234",
-      "candidaturas": [],
-      "id": 6
-    },
-    {
-      "tipo": "recrutador",
-      "nomeCompleto": "fasd",
-      "dataDeNascimento": null,
-      "email": "123@a.com",
-      "senha": "as",
-      "candidaturas": [],
-      "id": 7
     }
   ],
   "vagas": [
     {
-      "titulo": "Titulo teste",
-      "descricao": "descrição teste",
+      "titulo": "QA Junior",
+      "descricao": "testar tudo",
       "remuneracao": "5000",
       "id": 1
+    },
+    {
+      "titulo": "Dev senior",
+      "descricao": "Saber tudo",
+      "remuneracao": "1000",
+      "id": 2
+    },
+    {
+      "titulo": "Vaga teste 3",
+      "descricao": "snjddnjasdjs",
+      "remuneracao": "10000",
+      "id": 3
     }
   ]
 }

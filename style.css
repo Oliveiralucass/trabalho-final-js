@@ -236,15 +236,16 @@ option {
 }
 
 /* ========= home-recutador ========= */
-
 .padding-home-recrutador {
   padding-left: 45px;
   padding-right: 45px;
-  padding-bottom: 78px;
+  padding-bottom: 25px;
 }
+
 .padding-between {
   gap: 26px;
 }
+
 .button-recrutador-cadastrar-vaga {
   width: 50%;
   padding: 10px 0px;
@@ -259,6 +260,7 @@ option {
   font-weight: 700;
   gap: 63px;
 }
+
 .button-vagas-home-recrutador {
   display: flex;
   align-items: center;
@@ -269,27 +271,22 @@ option {
 .button-vagas {
   cursor: pointer;
   display: flex;
-  gap: 75%;
+  justify-content: space-between;
+  padding: 15px 20px;
   width: 95%;
   border-radius: 46px;
-  padding-left: 75px;
-  padding-right: 75px;
-  padding-top: 15px;
-  padding-bottom: 15px;
   border: var(--borda-card);
   background-color: white;
   box-shadow: var(--sombra-card);
 }
+
 .button-vagas:hover {
   background-color: var(--hover-card);
-}
-.button-vagas-home-recrutador:hover {
   opacity: 0.8;
   transition: 0.4s;
 }
 
 /* ========= cadastra-vaga-recrutador ========= */
-
 .text-center-cadastra-vaga {
   padding: 10px;
   margin-bottom: 37px;

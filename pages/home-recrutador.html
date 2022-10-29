@@ -13,40 +13,31 @@
     />
     <link rel="stylesheet" href="../style.css" />
   </head>
-  <body>
+  <body style="background-color: lightblue;">
      <section
       id="section-rec-1"
-      class="section-dois container mt-3 p-3"
-      style="background-color: pink"
-    >
+      class="section-dois container mt-3 p-3">
       <div
         class="container w-75 rounded-4 padding-home-recrutador pt-4"
-        style="background-color: white"
-      >
-        <div class="button-vagas-home-recrutador">
-          <div class="button-vagas">
-            <div id="nome-vaga">Dev React Jr</div>
-            <div  id="salario-vaga">R$ 5000</div>
-          </div>
-          <button id= "caadastra-vagas" type="submit" class="button-recrutador-cadastrar-vaga">
-            Cadastrar Vagas
-          </button>
+        style="background-color: white">
+        <div class="button-vagas-home-recrutador"></div>
+        <div class="d-flex align-items-center justify-content-center"> 
+          <button id="cadastra-vagas" type="submit" onclick="mudarModalCadastrarVagas()" class="button-recrutador-cadastrar-vaga">Cadastrar Vagas</button>
         </div>
       </div>
     </section>
 
-        <!-- cadastrar vaga  -->
-     <section class="section-dois container mt-3 p-3" id="section-rec-2" style="background-color: lightblue;">
+    <!-- cadastrar vaga  -->
+     <section class="section-dois container mt-3 p-3 hidden" id="section-rec-2">
         <h1 class="text-center-cadastra-vaga">Cadastra vaga</h1>
         <div class="container w-50 rounded-4 ps-5 pe-5 pt-4 cadastra-vaga-padding" style="background-color: white;">
           <form class="form-cadastro">
-            </select>
             <label for="titulo-vaga">Título da vaga:</label>
-            <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control" required>
+            <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control">
             <label for="vaga-descricao">Descrição da vaga:</label>
-            <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control" required>
+            <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control">
             <label for="vaga-remuneracao">Remuneração inicial:</label>
-            <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control" required>
+            <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control">
             <button type="submit" class="form-control mt-4" onclick="cadastrarNovaVaga(event)">Criar vaga</button>
           </form>
         </div>

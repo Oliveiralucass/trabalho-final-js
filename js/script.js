@@ -9,13 +9,6 @@ const loginTela = document.getElementById("login-tela")
 const loginEnviar = document.getElementById("login-enviar")
 const cadastroEnviar = document.getElementById("cadastro-enviar")
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const postId = urlSearchParams.get("candidato");
-
-let users;
-
-
-
 // Telas candidato
 const sectionCandUm = document.getElementById('section-1');
 const sectionCandDois = document.getElementById('section-2');
@@ -29,67 +22,71 @@ const sectionRecTres = document.getElementById('section-rec-3');
 
 // MODAL
 function mudarModalCadastro() {
-    loginTela.classList.toggle("blur");
-    cadastroModal.classList.toggle("hidden");
+  loginTela.classList.toggle("blur");
+  cadastroModal.classList.toggle("hidden");
+};
+
+function mudarModalCadastrarVagas() {
+  sectionRecUm.classList.toggle("blur");
+  sectionRecDois.classList.toggle("hidden");
 };
 
 // CADASTRO USUARIO
 class Usuario {
-    id;
-    tipo;
-    nomeCompleto;
-    dataDeNascimento;
-    email;
-    senha;
-    candidaturas = [];
+  id;
+  tipo;
+  nomeCompleto;
+  dataDeNascimento;
+  email;
+  senha;
+  candidaturas = [];
 
-    constructor(tipo, nomeCompleto, dataDeNascimento, email, senha) {
-        this.tipo = tipo
-        this.nomeCompleto = nomeCompleto
-        this.dataDeNascimento = dataDeNascimento
-        this.email = email
-        this.senha = senha
-    }
+  constructor(tipo, nomeCompleto, dataDeNascimento, email, senha) {
+    this.tipo = tipo
+    this.nomeCompleto = nomeCompleto
+    this.dataDeNascimento = dataDeNascimento
+    this.email = email
+    this.senha = senha
+  }
 }
 
 async function cadastrarUsuario(event){
-    event.preventDefault();
+  event.preventDefault();
 
-    const tipoUsuario = document.getElementById("tipo-usuario");
-    const cadastroNome = document.getElementById("cadastro-nome");
-    const cadastroDate = document.getElementById("cadastro-date");
-    const cadastroEmail = document.getElementById("cadastro-email");
-    const cadastroSenha = document.getElementById("cadastro-senha");
+  const tipoUsuario = document.getElementById("tipo-usuario");
+  const cadastroNome = document.getElementById("cadastro-nome");
+  const cadastroDate = document.getElementById("cadastro-date");
+  const cadastroEmail = document.getElementById("cadastro-email");
+  const cadastroSenha = document.getElementById("cadastro-senha");
 
-    const dataFormatada = cadastroDate.value.split("-")
+  const dataFormatada = cadastroDate.value.split("-")
 
-    const novoUsuario = new Usuario(
-        tipoUsuario.value,
-        cadastroNome.value,
-        new Date(dataFormatada[0], dataFormatada[1], dataFormatada[2]),
-        cadastroEmail.value,
-        cadastroSenha.value
-    );
+  const novoUsuario = new Usuario(
+    tipoUsuario.value,
+    cadastroNome.value,
+    new Date(dataFormatada[0], dataFormatada[1], dataFormatada[2]),
+    cadastroEmail.value,
+    cadastroSenha.value
+  );
  
-    try {
-        if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos"
-        await axios.post(`${URL_USUARIOS}`, novoUsuario)
-        alert("cadastrado com sucesso")
-    } catch(err) {  
-        alert(err)
-    }
+  try {
+    if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos"
+    await axios.post(`${URL_USUARIOS}`, novoUsuario)
+    alert("cadastrado com sucesso")
+  } catch(err) {  
+    alert(err)
+  }
 
-    mudarModalCadastro();
+  mudarModalCadastro();
 };
-
-
-
 
 async function fazerLogin(event) {
   event.preventDefault();
 
   const loginEmail = document.getElementById("login-email")
   const loginSenha = document.getElementById("login-senha")
+
+  let users;
 
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
 
@@ -104,32 +101,13 @@ async function fazerLogin(event) {
   })
 }
 
-// window.addEventListener('load', () => {
-//     async function puxarDB() {
-//         await axios.get(URL_USUARIOS).then((response) => {users = response.data});
-//         console.log(users)
-//     }
-//     puxarDB()
-// })
-
-
-// if(users.id == 3).includes(vaga = "vaga2"){
-//     if(users.canditaura.reprovado){
-//         renderiza tela reprovado
-//     } else {
-//         renderiza tela candidatado
-//     }
-// } else {
-//     renderiza tela nao inscrito
-// }
-
 // CADASTRAR VAGA
 class Vaga {
   id;
   titulo;
   descricao;
   remuneracao;
-  candidatos = []; // lista de candidatos na vaga
+  candidatos = [];
 
   constructor(titulo, descricao, remuneracao, candidatos) {
       this.titulo = titulo;
@@ -137,8 +115,6 @@ class Vaga {
       this.remuneracao = remuneracao;
       this.candidatos = candidatos;
   }
-
-
 }
 
 const cadastrarNovaVaga = async (event) => {
@@ -149,19 +125,52 @@ const cadastrarNovaVaga = async (event) => {
   const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
 
   const novaVaga = new Vaga(
-      tituloDaVaga.value,
-      descricaoDaVaga.value,
-      remuneracaoDaVaga.value
-  )
+    tituloDaVaga.value,
+    descricaoDaVaga.value,
+    remuneracaoDaVaga.value
+  );
   
   try {
-      await axios.post(`${URL_VAGAS}`, novaVaga);
-      console.log("Vaga Cadastrada com sucesso!");
+    if(tituloDaVaga.value == "" || descricaoDaVaga.value == "" || remuneracaoDaVaga.value == "") throw "Preencha todos os campos";
+    await axios.post(`${URL_VAGAS}`, novaVaga);
+    console.log("Vaga Cadastrada com sucesso!");
   }
   catch (error) {
-      console.log("Deu ruim! ", error);
-  }
+   alert(error);
+  };
+
+  mudarModalCadastrarVagas();
+};
+
+const exibirTodasAsVagas = async () => {
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+  console.log(this.users.id)
+  const divPai = document.querySelector('.button-vagas-home-recrutador');
+  vagas.map((vaga) => {
+    
+    divPai.innerHTML += `<a href="./vaga-candidato.html?vaga=${vaga.id}"><div class="button-vagas"><div>${vaga.titulo}</div> <div>${vaga.remuneracao}</div></div></a>`;
+  });
+};
+
+const exibirVaga = async () => {
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+  let vagaAtual = Number(window.location.search.split('?vaga=')[1])
+  console.log(vagas[vagaAtual - 1])
+  vagas.map((vaga) => {
+
+  })
 }
+
+if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html"){
+  exibirTodasAsVagas();
+} else {
+  exibirVaga()
+}
+
 
 /*
 const deletarVaga = async (event) => {
@@ -185,5 +194,3 @@ const deletarVaga = async (event) => {
       console.log("Deu ruim! ", error);
   }
 } */
-
-
