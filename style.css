@@ -28,6 +28,23 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
+header{
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.header-descricao{
+  display: flex;
+  justify-content: space-between;
+}
+.exit-text{
+  display: flex;
+  gap: 6%;
+}
+.text-sair{
+  padding-top: 20%;
+  color: #6f6c90;
+}
 
 a {
   text-decoration: none;
@@ -37,6 +54,11 @@ ul,
 li {
   list-style-type: none;
 }
+body{
+  background-color: white;
+}
+
+
 
 p {
   font-size: 1.125rem;
