@@ -129,10 +129,11 @@ async function cadastrarUsuario(event){
  
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+  let verificaEmail = users.map((user) => { if(user.email === cadastroEmail.value) return true })
 
   try {
-    if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos"
-    if(users.filter((user) => user.email === cadastroEmail.value)) throw "E-mail já está cadastrado"
+    if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos";
+    if(verificaEmail.includes(true)) throw "Email já está cadastrado";
     await axios.post(`${URL_USUARIOS}`, novoUsuario)
     alert("cadastrado com sucesso")
   } catch(err) {
