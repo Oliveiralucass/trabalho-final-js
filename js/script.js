@@ -127,11 +127,15 @@ async function cadastrarUsuario(event){
     cadastroSenha.value
   );
  
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+
   try {
     if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos"
+    if(users.filter((user) => user.email === cadastroEmail.value)) throw "E-mail já está cadastrado"
     await axios.post(`${URL_USUARIOS}`, novoUsuario)
     alert("cadastrado com sucesso")
-  } catch(err) {  
+  } catch(err) {
     alert(err)
   }
 
