@@ -5,28 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jobr</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body style="background-color: aliceblue;">
-    <section
-      id="section-rec-1"
-      class="section-dois container mt-3 p-3">
-      <div
-        class="container w-75 rounded-4 padding-home-recrutador pt-4"
-        style="background-color: white" >
+    <section id="section-rec-1" class="section-dois container mt-3 p-3">
+      <div class="container w-75 rounded-4 padding-home-recrutador pt-4" style="background-color: white" >
         <div class="button-vagas-home-recrutador"></div>
       </div>
     </section>
 
     <section id="section-rec-3" class="section-dois container mt-3 p-3 hidden">
-    <div class="container w-75 rounded-4 padding-home-recrutador pt-4"
-      style="background-color: white">
+    <div class="container w-75 rounded-4 padding-home-recrutador pt-4" style="background-color: white">
       <div class="header-card">
         <div id="id-vaga"></div>
         <div id="salario-vaga"></div>
@@ -35,58 +25,33 @@
         <div id="titulo-vaga-recrutador"></div>
         <div id="descricao-vaga-recrutador" class="descricao-vaga-recrutador"></div>
       </div>
-      <div class="titulo-candidatos-recrutador">
-        <b>Candidatos inscritos nas vagas</b>
-      </div>
+      <div class="titulo-candidatos-recrutador"><b>Candidatos inscritos nas vagas</b></div>
       <div class="nome-data-candidato-nao-candidatado">
         <div><b>Nome</b></div>
         <div><b>Data de Nascimento</b></div>
       </div>
       <div id="container-candidatos"></div>
-      <button type="submit" id="candidatar" class="button-recrutador-exclui-vaga">
-        Candidatar-me
-      </button>
+      <button type="submit" id="candidatar" class="button-recrutador-exclui-vaga">Candidatar-me</button>
     </div>
   </section>
 
-    <!-- Tela de vaga quando o usuário está candidatado -->
-    <section
-    id="section-3"
-    class="section-dois container mt-3 p-3 hidden"
-    style="background-color: lightyellow"
-  >
-    <div
-      class="container w-75 rounded-4 padding-home-recrutador pt-4"
-      style="background-color: white"
-    >
+  <!-- Tela de vaga quando o usuário está candidatado -->
+  <section id="section-3" class="section-dois container mt-3 p-3 hidden">
+    <div class="container w-75 rounded-4 padding-home-recrutador pt-4" style="background-color: white">
       <div class="header-card">
-        <div id="id-vaga-candidato-nao-candidatado">ID da Vaga: ###</div>
-        <div id="salario-vaga-candidato-nao-candidatado">Remuneração: R$: 5000</div>
+        <div id="id-vaga-candidatado"></div>
+        <div id="salario-vaga-candidatado"></div>
       </div>
       <div class="section-titulo-descricao">
-        <div id="titulo-vaga-recrutador-candidato-nao-candidatado"><b>Título:</b> Dev React Jr</div>
-        <div id="descricao-vaga-recrutador-candidato-nao-candidatado" class="descricao-vaga-recrutador">
-          <b>Descrição da vaga:</b> Descrição da vaga: Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Sed sollicitudin sit amet ante in
-          euismod. Aenean nec maximus risus. Mauris fringilla tincidunt lacus,
-          vel consectetur orci finibus quis.
-        </div>
+        <div id="titulo-vaga-candidatado"></div>
+        <div id="descricao-candidato-candidatado" class="descricao-vaga-recrutador"></div>
       </div>
-      <div class="titulo-candidatos-recrutador">
-        <b>Candidatos escritos nas vagas</b>
-      </div>
+      <div class="titulo-candidatos-recrutador"><b>Candidatos inscritos nas vagas</b></div>
       <div class="nome-data-candidato-nao-candidatado">
         <div><b>Nome</b></div>
         <div><b>Data de Nascimento</b></div>
       </div>
-      <div id="" class="barra-nome-data-candidato-nao-cadastrado">
-        <div class="nome-tela-recrutador" id="nome-candidato-candidatado">João da Silva</div>
-        <div class="data-de-nascimento" id="date-nascimento-candidato-candidatado">01/10/2022</div>
-      </div>
-      <div class="barra-nome-data-candidato-nao-cadastrado">
-        <div class="nome-tela-recrutador" id="nome-candidato-candidatado">João da Silva</div>
-        <div class="data-de-nascimento" id="date-nascimento-candidato-candidatado">01/10/2022</div>
-      </div>
+      <div id="container-candidatados"></div>
       <button type="submit" onclick="" class="button-recrutador-exclui-vaga-candidato-cadastrado">
         Cancelar Candidatura
       </button>

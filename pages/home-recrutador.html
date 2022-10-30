@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="../style.css" />
   </head>
-  <body style="background-color: lightblue;">
+  <body style="background-color: aliceblue;">
      <section
       id="section-rec-1"
       class="section-dois container mt-3 p-3">
@@ -28,26 +28,23 @@
     </section>
 
     <!-- cadastrar vaga  -->
-     <section class="section-dois container mt-3 p-3 hidden" id="section-rec-2">
-        <h1 class="text-center-cadastra-vaga">Cadastra vaga</h1>
-        <div class="container w-50 rounded-4 ps-5 pe-5 pt-4 cadastra-vaga-padding" style="background-color: white;">
-          <form class="form-cadastro">
-            <label for="titulo-vaga">Título da vaga:</label>
-            <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control">
-            <label for="vaga-descricao">Descrição da vaga:</label>
-            <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control">
-            <label for="vaga-remuneracao">Remuneração inicial:</label>
-            <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control">
-            <button type="submit" class="form-control mt-4" onclick="cadastrarNovaVaga(event)">Criar vaga</button>
-          </form>
-        </div>
-      </section>
-
+    <section class="section-dois container mt-3 p-3 hidden" id="section-rec-2">
+      <h1 class="text-center-cadastra-vaga">Cadastra vaga</h1>
+      <div class="container w-50 rounded-4 ps-5 pe-5 pt-4 cadastra-vaga-padding" style="background-color: white;">
+        <form class="form-cadastro">
+          <label for="titulo-vaga">Título da vaga:</label>
+          <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control">
+          <label for="vaga-descricao">Descrição da vaga:</label>
+          <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control">
+          <label for="vaga-remuneracao">Remuneração inicial:</label>
+          <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control">
+          <button type="submit" class="form-control mt-4" onclick="cadastrarNovaVaga(event)">Criar vaga</button>
+        </form>
+      </div>
+    </section>
 
     <!-- Modal detalhes vaga recrutador -->
-    <section
-    id="section-rec-3"
-      class="section-dois container mt-3 p-3 hidden">
+    <section id="section-rec-3" class="section-dois container mt-3 p-3 hidden">
       <div
         class="container w-75 rounded-4 padding-home-recrutador pt-4"
         style="background-color: white">
@@ -66,25 +63,14 @@
           <div class="nome-categoria"><b>Nome</b></div>
           <div><b>Data de Nascimento</b></div>
         </div>
-        <div id="" class="barra-nome-data">
-          <div class="nome-tela-recrutador" id="nome-vaga">João da Silva</div>
-          <div class="data-de-nascimento" id="date-nascimento">01/10/2022</div>
-          <button class="button-aprovado-cadastrar-vaga" onclick="">
-            Reprovar
-          </button>
-        </div>
-        <div class="barra-nome-data">
-          <div class="nome-tela-recrutador" id="nome-vaga">João da Silva</div>
-          <div class="data-de-nascimento" id="date-nascimento">01/10/2022</div>
-          <button class="button-aprovado-cadastrar-vaga" onclick="">
-            Reprovar
-          </button>
-        </div>
+        <div id="container-recrutador"></div>
         <button type="submit" onclick="deletarVaga(event)" class="button-recrutador-exclui-vaga">
           Excluir vaga
         </button>
       </div>
     </section>
+
+
     <script src="../node_modules/axios/dist/axios.min.js"></script>
     <script src="../js/script.js"></script>
   </body>

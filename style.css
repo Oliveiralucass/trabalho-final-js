@@ -157,9 +157,10 @@ a {
 .section-dois{
   position: absolute;
   left: 50%;
-  top: 45%;
+  top: 49.6%;
   transform: translate(-50%, -50%);
 }
+
 .section-dois h1 {
   color: var(--cor-texto-primaria);
   font-weight: 700;
