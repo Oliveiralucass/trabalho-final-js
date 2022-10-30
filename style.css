@@ -351,6 +351,7 @@ option {
   background-color: white;
   box-shadow: var(--sombra-card);
 }
+
 .nome-tela-recrutador,
 .data-de-nascimento {
   margin-left: 20px;
@@ -402,7 +403,7 @@ option {
 .barra-nome-data-candidato-nao-cadastrado {
   margin-top: 15px;
   display: flex;
-  gap: 72%;
+  justify-content: space-between;
   width: 100%;
   padding-right: -4%;
   border-radius: 46px;
