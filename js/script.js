@@ -135,7 +135,7 @@ async function cadastrarUsuario(event){
     if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos";
     if(verificaEmail.includes(true)) throw "Email já está cadastrado";
     await axios.post(`${URL_USUARIOS}`, novoUsuario)
-    alert("cadastrado com sucesso")
+    alert("Cadastrado com sucesso")
   } catch(err) {
     alert(err)
   }
@@ -150,16 +150,12 @@ const cadastrarNovaVaga = async (event) => {
   const descricaoDaVaga = document.getElementById("vaga-descricao");
   const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
 
-  const novaVaga = new Vaga(
-    tituloDaVaga.value,
-    descricaoDaVaga.value,
-    remuneracaoDaVaga.value
-  );
+  const novaVaga = new Vaga(tituloDaVaga.value, descricaoDaVaga.value, remuneracaoDaVaga.value);
   
   try {
     if(tituloDaVaga.value == "" || descricaoDaVaga.value == "" || remuneracaoDaVaga.value == "") throw "Preencha todos os campos";
     await axios.post(`${URL_VAGAS}`, novaVaga);
-    console.log("Vaga Cadastrada com sucesso!");
+    alert("Vaga cadastrada com sucesso!");
   }
   catch (error) {
    alert(error);
