@@ -1,6 +1,8 @@
 const URL_USUARIOS = "http://localhost:3000/usuarios";
 const URL_VAGAS = "http://localhost:3000/vagas";
 
+// if(usuario.id === usuarioAtivoId && usuario.tipo === "recrutador"){
+
 const cadastrarAgora = document.getElementById("cadastrar-agora");
 const acessarAgora = document.getElementById("acessar-agora");
 const cadastroModal = document.getElementById("cadastro-modal");
@@ -95,8 +97,8 @@ class Candidatura {
 async function fazerLogin(event) {
   event.preventDefault();
 
-  const loginEmail = document.getElementById("login-email")
-  const loginSenha = document.getElementById("login-senha")
+  const loginEmail = document.getElementById("login-email");
+  const loginSenha = document.getElementById("login-senha");
 
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
@@ -108,9 +110,10 @@ async function fazerLogin(event) {
       } else {
         window.location.href = `./pages/home-candidatos.html?user=${element.id}`
       }
-    }
-  })
-}
+    };
+  });
+
+};
 
 //CADASTROS
 async function cadastrarUsuario(event){
@@ -122,7 +125,7 @@ async function cadastrarUsuario(event){
   const cadastroEmail = document.getElementById("cadastro-email");
   const cadastroSenha = document.getElementById("cadastro-senha");
 
-  const dataFormatada = cadastroDate.value.split("-")
+  const dataFormatada = cadastroDate.value.split("-");
 
   const novoUsuario = new Usuario(
     tipoUsuario.value,
@@ -134,15 +137,15 @@ async function cadastrarUsuario(event){
  
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
-  let verificaEmail = users.map((user) => { if(user.email === cadastroEmail.value) return true })
+  let verificaEmail = users.map((user) => { if(user.email === cadastroEmail.value) return true });
 
   try {
     if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos";
     if(verificaEmail.includes(true)) throw "Email já está cadastrado";
-    await axios.post(`${URL_USUARIOS}`, novoUsuario)
-    alert("Cadastrado com sucesso")
+    await axios.post(`${URL_USUARIOS}`, novoUsuario);
+    alert("Cadastrado com sucesso");
   } catch(err) {
-    alert(err)
+    alert(err);
   }
 
   mudarModalCadastro();
@@ -236,16 +239,27 @@ async function candidatarVaga(idDaVaga){
   let conteudo = vagas.filter((vaga) => {
     if(vaga.id === idDaVaga) {
       if(!vaga.candidatos.includes(usuarioAtivoId)){
-        vaga.candidatos.push({ reprovado: false, userID: usuarioAtivoId })
+        vaga.candidatos.push(usuarioAtivoId)
         return vaga.candidatos
       }
     }
   })
 
-  if(conteudo[0] !== undefined) return await axios.put(`${URL_VAGAS}/${idDaVaga}`, conteudo[0])
-  alert('Usuario já está candidatado')
-}
 
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => { users = response.data });
+
+  let candidaturaUsuario = users.filter((user) => {
+    if(user.id === usuarioAtivoId) {
+      user.candidaturas.push(new Candidatura (idDaVaga, usuarioAtivoId, false))
+      return user.candidaturas
+    }
+  })
+
+  await axios.put(`${URL_USUARIOS}/${usuarioAtivoId}`, candidaturaUsuario[0])
+
+  await axios.put(`${URL_VAGAS}/${idDaVaga}`, conteudo[0])
+};
 // Usuario está candidatado
 async function exibeTelaCadastradoNaVaga(idDaVaga){
   let vagas;
@@ -324,38 +338,58 @@ async function exibeDetalhesRecrutador(idDaVaga){
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
 
-  vagas.map((vaga) => {
-    if(vaga.id === idDaVaga){
-      users.map((user) => {
-        if(vaga.candidatos.includes(user.id)){
-          const containerRecrutador = document.getElementById('container-recrutador');
-          const divPaiTres = document.createElement('div');
-          divPaiTres.classList.add('barra-nome-data');
+  users.map((usuario) => {
+    if(usuario.id === usuarioAtivoId && usuario.tipo === "recrutador"){
+      vagas.map((vaga) => {
+        if(vaga.id === idDaVaga){
+          users.map((user) => {
+              if(vaga.candidatos.includes(user.id)){
+                const containerRecrutador = document.getElementById('container-recrutador');
+                const divPaiTres = document.createElement('div');
+                divPaiTres.classList.add('barra-nome-data');
+      
+                const nomeUsuarioTres = document.createElement('div');
+                nomeUsuarioTres.classList.add('nome-tela-recrutador');
+                const nascimentoTres = document.createElement('div');
+                nascimentoTres.classList.add('data-de-nascimento');
+                const buttonReprovar = document.createElement('button');
+                buttonReprovar.classList.add('button-aprovado-cadastrar-vaga');
+                buttonReprovar.setAttribute('onclick', `reprovarCandidato("${user.id}", ${user.id})`);
+                buttonReprovar.innerText = "Reprovar";
 
-          const nomeUsuarioTres = document.createElement('div');
-          nomeUsuarioTres.classList.add('nome-tela-recrutador');
-          const nascimentoTres = document.createElement('div');
-          nascimentoTres.classList.add('data-de-nascimento');
-          const buttonReprovar = document.createElement('button');
-          buttonReprovar.classList.add('button-aprovado-cadastrar-vaga');
-          buttonReprovar.setAttribute('onclick', 'reprovarCandidato()');
-          buttonReprovar.innerText = "Reprovar";
-
-          divPaiTres.appendChild(nomeUsuarioTres);
-          divPaiTres.appendChild(nascimentoTres);
-          divPaiTres.appendChild(buttonReprovar);
-          containerRecrutador.appendChild(divPaiTres);
-        
-          nomeUsuarioTres.innerText = user.nomeCompleto;
-          nascimentoTres.innerText = user.dataDeNascimento;
+                divPaiTres.appendChild(nomeUsuarioTres);
+                divPaiTres.appendChild(nascimentoTres);
+                divPaiTres.appendChild(buttonReprovar);
+                containerRecrutador.appendChild(divPaiTres);
+              
+                nomeUsuarioTres.innerText = user.nomeCompleto;
+                nascimentoTres.innerText = user.dataDeNascimento;
+            }
+          });
         };
       });
-    };
-  });
+    }
+
+
+  })
+
+  
 }
 
-function reprovarCandidato() {
-  console.log('teste')
+async function reprovarCandidato(userNomeCompleto, idDaVaga) {
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+
+  console.log(userNomeCompleto, idDaVaga);
+  
+  users.filter((user) => {
+    
+  })
+
+
 }
 
 /*

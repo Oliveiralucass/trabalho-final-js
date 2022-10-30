@@ -6,7 +6,13 @@
       "dataDeNascimento": "1997-07-10T03:00:00.000Z",
       "email": "teste@gmail.com",
       "senha": "123",
-      "candidaturas": [],
+      "candidaturas": [
+        {
+          "idVaga": 2,
+          "idCandidato": 1,
+          "reprovado": false
+        }
+      ],
       "id": 1
     },
     {
@@ -33,17 +39,17 @@
       "titulo": "QA Senior CLT",
       "descricao": "Saber mais que o Pedro",
       "remuneracao": "50000",
-      "candidatos": [
-        3,
-        1
-      ],
+      "candidatos": [],
       "id": 1
     },
     {
       "titulo": "Dev junior",
       "descricao": "Juninho",
       "remuneracao": "1000",
-      "candidatos": [],
+      "candidatos": [
+        1,
+        3
+      ],
       "id": 2
     }
   ]
