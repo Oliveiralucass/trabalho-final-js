@@ -28,20 +28,21 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
-header{
+
+header {
   margin-top: 1%;
   margin-left: 2%;
   margin-right: 2%;
 }
-.header-descricao{
+.header-descricao {
   display: flex;
   justify-content: space-between;
 }
-.exit-text{
+.exit-text {
   display: flex;
   gap: 6%;
 }
-.text-sair{
+.text-sair {
   padding-top: 20%;
   color: #6f6c90;
 }
@@ -54,11 +55,10 @@ ul,
 li {
   list-style-type: none;
 }
-body{
+body {
   background-color: white;
+  background-image: url(./assets/background.png);
 }
-
-
 
 p {
   font-size: 1.125rem;
@@ -75,7 +75,7 @@ h1 {
   line-height: 2.875rem;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 .blur {
@@ -176,7 +176,7 @@ a {
 }
 
 /* ========= Section 2 Sign Up ========= */
-.section-dois{
+.section-dois {
   position: absolute;
   left: 50%;
   top: 45%;
@@ -436,7 +436,7 @@ option {
   box-shadow: var(--sombra-card);
 }
 /* ========= cadastra-vaga-candidato-cadastrado ========= */
-.button-recrutador-exclui-vaga-candidato-cadastrado{
+.button-recrutador-exclui-vaga-candidato-cadastrado {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
@@ -455,7 +455,7 @@ option {
 
 /* ========= cadastra-vaga-candidato-reprovado ========= */
 
-.button-recrutador-exclui-vaga-candidato-reprovado{
+.button-recrutador-exclui-vaga-candidato-reprovado {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
@@ -471,4 +471,3 @@ option {
   font-weight: 700;
   gap: 63px;
 }
-
