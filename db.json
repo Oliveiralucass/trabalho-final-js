@@ -11,6 +11,11 @@
           "idVaga": 2,
           "idCandidato": 1,
           "reprovado": false
+        },
+        {
+          "idVaga": 1,
+          "idCandidato": 1,
+          "reprovado": false
         }
       ],
       "id": 1
@@ -39,7 +44,9 @@
       "titulo": "QA Senior CLT",
       "descricao": "Saber mais que o Pedro",
       "remuneracao": "50000",
-      "candidatos": [],
+      "candidatos": [
+        1
+      ],
       "id": 1
     },
     {

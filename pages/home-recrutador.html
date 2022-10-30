@@ -5,21 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jobr</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body style="background-color: aliceblue;">
-     <section
-      id="section-rec-1"
-      class="section-dois container mt-3 p-3">
-      <div
-        class="container w-75 rounded-4 padding-home-recrutador pt-4"
-        style="background-color: white">
+     <section id="section-rec-1" class="section-dois container mt-3 p-3">
+      <div class="container w-75 rounded-4 padding-home-recrutador pt-4" style="background-color: white">
         <div class="button-vagas-home-recrutador"></div>
         <div class="d-flex align-items-center justify-content-center"> 
           <button id="cadastra-vagas" type="submit" onclick="mudarModalCadastrarVagas()" class="button-recrutador-cadastrar-vaga">Cadastrar Vagas</button>
@@ -45,9 +36,7 @@
 
     <!-- Modal detalhes vaga recrutador -->
     <section id="section-rec-3" class="section-dois container mt-3 p-3 hidden">
-      <div
-        class="container w-75 rounded-4 padding-home-recrutador pt-4"
-        style="background-color: white">
+      <div class="container w-75 rounded-4 padding-home-recrutador pt-4" style="background-color: white">
         <div class="header-card">
           <div id="id-vaga"></div>
           <div id="salario-vaga"></div>
@@ -64,7 +53,7 @@
           <div><b>Data de Nascimento</b></div>
         </div>
         <div id="container-recrutador"></div>
-        <button type="submit" onclick="deletarVaga(event)" class="button-recrutador-exclui-vaga">
+        <button id="deletar-vaga" class="button-recrutador-exclui-vaga">
           Excluir vaga
         </button>
       </div>

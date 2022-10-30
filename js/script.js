@@ -215,6 +215,14 @@ const detalhesVaga = async (idDaVaga) => {
     }
   })
 
+  users.map((user) => { 
+    if(user.id === usuarioAtivoId){ 
+      if(user.tipo === "recrutador"){ 
+        const buttonDeletar = document.getElementById('deletar-vaga');
+        buttonDeletar.setAttribute('onclick', `deletarVaga(${idDaVaga})`)
+    }}
+  })
+
   let vagaFiltrada = vagas.filter((detalhes) => {
     if(detalhes.id === idDaVaga){
       if(detalhes.candidatos.includes(usuarioAtivoId)) return exibeTelaCadastradoNaVaga(idDaVaga);
@@ -369,11 +377,7 @@ async function exibeDetalhesRecrutador(idDaVaga){
         };
       });
     }
-
-
   })
-
-  
 }
 
 async function reprovarCandidato(userNomeCompleto, idDaVaga) {
@@ -392,28 +396,15 @@ async function reprovarCandidato(userNomeCompleto, idDaVaga) {
 
 }
 
-/*
-const deletarVaga = async (event) => {
-  event.preventDefault();
-
-  const tituloDaVaga = document.getElementById("titulo-vaga");
-  const descricaoDaVaga = document.getElementById("vaga-descricao");
-  const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
-
-  const vaga = (
-      tituloDaVaga.value,
-      descricaoDaVaga.value,
-      remuneracaoDaVaga.value
-  )
-  
+const deletarVaga = async (idDaVaga) => {
   try {
-      await axios.delete(`${URL_VAGAS}`, vaga);
-      console.log("Vaga Deletada com sucesso!");
+    await axios.delete(`${URL_VAGAS}/${idDaVaga}`);
+    alert("Vaga deletada com sucesso!");
   }
   catch (error) {
-      console.log("Deu ruim! ", error);
+    alert("Deu ruim!");
   }
-} */
+}
 
 if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html"){
   exibirTodasAsVagas();
