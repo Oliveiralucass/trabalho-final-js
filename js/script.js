@@ -48,6 +48,11 @@ function mudarModalCandidatadoNaVaga(){
   sectionRecTres.classList.toggle('blur');
 }
 
+function mudarModalCandidatoReprovado(){
+  sectionCandQuatro.classList.toggle('hidden');
+  sectionCandTres.classList.toggle('hidden')
+}
+
 // CLASSES DE CADASTROS
 class Usuario {
   id;
@@ -209,6 +214,9 @@ const detalhesVaga = async (idDaVaga) => {
   users.map((user) => {
     if(user.id === usuarioAtivoId){
       if(user.tipo === "candidato") {
+        user.candidaturas.map((candidatura) => { 
+          if(candidatura.idVaga === idDaVaga && candidatura.reprovado) exibeDetalhesCandidatoReprovado(idDaVaga)
+        })
         const candidatar = document.getElementById("candidatar")
         candidatar.setAttribute("onclick", `candidatarVaga(${idDaVaga})`)
       }
@@ -253,7 +261,6 @@ async function candidatarVaga(idDaVaga){
     }
   })
 
-
   let users;
   await axios.get(URL_USUARIOS).then((response) => { users = response.data });
 
@@ -268,6 +275,7 @@ async function candidatarVaga(idDaVaga){
 
   await axios.put(`${URL_VAGAS}/${idDaVaga}`, conteudo[0])
 };
+
 // Usuario está candidatado
 async function exibeTelaCadastradoNaVaga(idDaVaga){
   let vagas;
@@ -351,27 +359,27 @@ async function exibeDetalhesRecrutador(idDaVaga){
       vagas.map((vaga) => {
         if(vaga.id === idDaVaga){
           users.map((user) => {
-              if(vaga.candidatos.includes(user.id)){
-                const containerRecrutador = document.getElementById('container-recrutador');
-                const divPaiTres = document.createElement('div');
-                divPaiTres.classList.add('barra-nome-data');
-      
-                const nomeUsuarioTres = document.createElement('div');
-                nomeUsuarioTres.classList.add('nome-tela-recrutador');
-                const nascimentoTres = document.createElement('div');
-                nascimentoTres.classList.add('data-de-nascimento');
-                const buttonReprovar = document.createElement('button');
-                buttonReprovar.classList.add('button-aprovado-cadastrar-vaga');
-                buttonReprovar.setAttribute('onclick', `reprovarCandidato("${user.id}", ${user.id})`);
-                buttonReprovar.innerText = "Reprovar";
+            if(vaga.candidatos.includes(user.id)){
+              const containerRecrutador = document.getElementById('container-recrutador');
+              const divPaiTres = document.createElement('div');
+              divPaiTres.classList.add('barra-nome-data');
+    
+              const nomeUsuarioTres = document.createElement('div');
+              nomeUsuarioTres.classList.add('nome-tela-recrutador');
+              const nascimentoTres = document.createElement('div');
+              nascimentoTres.classList.add('data-de-nascimento');
+              const buttonReprovar = document.createElement('button');
+              buttonReprovar.classList.add('button-aprovado-cadastrar-vaga');
+              buttonReprovar.setAttribute('onclick', `reprovarCandidato("${user.id}", ${user.id})`);
+              buttonReprovar.innerText = "Reprovar";
 
-                divPaiTres.appendChild(nomeUsuarioTres);
-                divPaiTres.appendChild(nascimentoTres);
-                divPaiTres.appendChild(buttonReprovar);
-                containerRecrutador.appendChild(divPaiTres);
-              
-                nomeUsuarioTres.innerText = user.nomeCompleto;
-                nascimentoTres.innerText = user.dataDeNascimento;
+              divPaiTres.appendChild(nomeUsuarioTres);
+              divPaiTres.appendChild(nascimentoTres);
+              divPaiTres.appendChild(buttonReprovar);
+              containerRecrutador.appendChild(divPaiTres);
+            
+              nomeUsuarioTres.innerText = user.nomeCompleto;
+              nascimentoTres.innerText = user.dataDeNascimento;
             }
           });
         };
@@ -406,6 +414,52 @@ const deletarVaga = async (idDaVaga) => {
   }
 }
 
-if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html"){
-  exibirTodasAsVagas();
+async function exibeDetalhesCandidatoReprovado(idDaVaga){
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+  const idVaga = document.getElementById('id-vaga-reprovado');
+  const salarioVaga = document.getElementById('salario-vaga-reprovado');
+  const tituloVaga = document.getElementById('titulo-vaga-reprovado');
+  const descricaoVaga = document.getElementById('descricao-candidato-reprovado');
+
+  vagas.filter((detalhes) => {
+    if(detalhes.id === idDaVaga){
+      idVaga.innerHTML = `<b>ID da Vaga:</b> ${idDaVaga}`;
+      salarioVaga.innerHTML = `<b>Remuneração:</b> R$ ${detalhes.remuneracao}`;
+      tituloVaga.innerHTML = `<b>Título:</b> ${detalhes.titulo}`;
+      descricaoVaga.innerHTML = `<b>Descrição da vaga:</b> ${detalhes.descricao}`;
+    };
+  });
+
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+
+  users.map((user) => {
+    user.candidaturas.map((candidatura) => { 
+      if(candidatura.idVaga === idDaVaga && candidatura.reprovado) {
+        const containerReprovados = document.getElementById('container-reprovados');
+        const divPaiTres = document.createElement('div');
+        divPaiTres.classList.add('barra-nome-data-candidato-nao-cadastrado');
+        const nomeUsuarioTres = document.createElement('div');
+        nomeUsuarioTres.classList.add('nome-tela-recrutador'); 
+        const nascimentoTres = document.createElement('div');
+        nascimentoTres.classList.add('data-de-nascimento');
+        divPaiTres.appendChild(nomeUsuarioTres);
+        divPaiTres.appendChild(nascimentoTres);
+        containerReprovados.appendChild(divPaiTres);
+
+        if(usuarioAtivoId === user.id && candidatura.reprovado){
+          nomeUsuarioTres.style.color = 'red';
+          nascimentoTres.style.color = 'red';
+        }
+        nomeUsuarioTres.innerText = user.nomeCompleto;
+        nascimentoTres.innerText = user.dataDeNascimento;
+      }
+    })
+  });
+  
+  mudarModalCandidatoReprovado()
 }
+
+if(window.location.pathname === "/pages/home-candidatos.html" || window.location.pathname === "/pages/home-recrutador.html") exibirTodasAsVagas();

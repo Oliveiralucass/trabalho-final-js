@@ -433,7 +433,6 @@ option {
 }
 
 /* ========= cadastra-vaga-candidato-reprovado ========= */
-
 .button-recrutador-exclui-vaga-candidato-reprovado{
   width: 50%;
   margin-left: 25%;
@@ -443,11 +442,9 @@ option {
   margin-bottom: 15px;
   border-radius: 20px;
   border: none;
-  background-color: var(rgba(111, 108, 144, 1));
-  color: #fff;
-  box-shadow: var(--sombra-btn);
+  background-color: rgb(61, 61, 61);
+  color: rgb(180, 175, 175);
   transition: 0.4s;
   font-weight: 700;
   gap: 63px;
 }
-

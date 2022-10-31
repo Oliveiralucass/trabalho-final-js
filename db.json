@@ -10,7 +10,7 @@
         {
           "idVaga": 2,
           "idCandidato": 1,
-          "reprovado": false
+          "reprovado": true
         },
         {
           "idVaga": 1,
@@ -35,7 +35,13 @@
       "dataDeNascimento": "1997-07-10T03:00:00.000Z",
       "email": "teste3@gmail.com",
       "senha": "123",
-      "candidaturas": [],
+      "candidaturas": [
+        {
+          "idVaga": 2,
+          "idCandidato": 1,
+          "reprovado": true
+        }
+      ],
       "id": 3
     }
   ],
