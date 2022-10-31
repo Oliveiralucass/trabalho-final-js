@@ -388,20 +388,28 @@ async function exibeDetalhesRecrutador(idDaVaga){
   })
 }
 
-async function reprovarCandidato(userNomeCompleto, idDaVaga) {
+async function reprovarCandidato(userClicadoId, idDaVaga) {
   let vagas;
   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
-
-  console.log(userNomeCompleto, idDaVaga);
   
-  users.filter((user) => {
-    
+  let usuarioClicado = users.filter((user) => {
+    return user.id === userClicadoId
+  })
+  let vagaParaDeletar = usuarioClicado[0].candidaturas.filter((vaga) => {
+    return vaga.idVaga === idDaVaga
   })
 
+  let vagaTeste = usuarioClicado[0].candidaturas.filter((vaga) => {
+    if(vaga.idVaga === idDaVaga){
+      vaga = vaga.reprovado = true;
+      return vaga
+    }
+  })
 
+  await axios.put(`${URL_USUARIOS}/${usuarioClicado[0].id}`, vagaTeste[0])
 }
 
 const deletarVaga = async (idDaVaga) => {
