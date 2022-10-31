@@ -440,8 +440,18 @@ async function buscarCandidatos(idDaVaga) {
               divPai.appendChild(nascimento);
               container.appendChild(divPai);
     
+/*
+let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
+          let x = re.exec(user.dataDeNascimento);
+          nomeUsuarioTres.innerText = user.nomeCompleto;
+          nascimentoTres.innerText = x[3] + "/" + x[2] + "/" + x[1];
+
+
+*/
+              let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
+              let x = re.exec(user.dataDeNascimento);
               nomeUsuario.innerText = user.nomeCompleto;
-              nascimento.innerText = user.dataDeNascimento;
+              nascimento.innerText = x[3] + "/" + x[2] + "/" + x[1];
     
               const containerCandidatos = document.getElementById('container-candidatados');
               const divPaiDois = document.createElement('div');
@@ -455,7 +465,7 @@ async function buscarCandidatos(idDaVaga) {
               containerCandidatos.appendChild(divPaiDois);
     
               nomeUsuarioDois.innerText = user.nomeCompleto;
-              nascimentoDois.innerText = user.dataDeNascimento;
+              nascimentoDois.innerText = x[3] + "/" + x[2] + "/" + x[1];
             };
           });
         };
@@ -494,9 +504,11 @@ async function exibeDetalhesRecrutador(idDaVaga){
               divPaiTres.appendChild(nascimentoTres);
               divPaiTres.appendChild(buttonReprovar);
               containerRecrutador.appendChild(divPaiTres);
-            
+              
+              let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
+              let x = re.exec(user.dataDeNascimento);
               nomeUsuarioTres.innerText = user.nomeCompleto;
-              nascimentoTres.innerText = user.dataDeNascimento;
+              nascimentoTres.innerText = x[3] + "/" + x[2] + "/" + x[1];
             }
           });
         };
@@ -603,8 +615,28 @@ async function exibeDetalhesCandidatoReprovado(idDaVaga){
           nomeUsuarioTres.style.color = 'red';
           nascimentoTres.style.color = 'red';
         }
+        let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
+        let x = re.exec(user.dataDeNascimento);
         nomeUsuarioTres.innerText = user.nomeCompleto;
-        nascimentoTres.innerText = user.dataDeNascimento;
+        nascimentoTres.innerText = x[3] + "/" + x[2] + "/" + x[1];
+      } else{
+        
+          const containerReprovados = document.getElementById('container-reprovados');
+          const divPaiTres = document.createElement('div');
+          divPaiTres.classList.add('barra-nome-data-candidato-nao-cadastrado');
+          const nomeUsuarioTres = document.createElement('div');
+          nomeUsuarioTres.classList.add('nome-tela-recrutador'); 
+          const nascimentoTres = document.createElement('div');
+          nascimentoTres.classList.add('data-de-nascimento');
+          divPaiTres.appendChild(nomeUsuarioTres);
+          divPaiTres.appendChild(nascimentoTres);
+          containerReprovados.appendChild(divPaiTres);
+
+          let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
+          let x = re.exec(user.dataDeNascimento);
+          nomeUsuarioTres.innerText = user.nomeCompleto;
+          nascimentoTres.innerText = x[3] + "/" + x[2] + "/" + x[1];
+        
       }
     })
   });
