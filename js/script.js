@@ -167,8 +167,28 @@ async function cadastrarUsuario(event){
   mudarModalCadastro();
 };
 
+const cadastrarNovaVaga = async (event) => {
+  event.preventDefault();
 
+  const tituloDaVaga = document.getElementById("titulo-vaga");
+  const descricaoDaVaga = document.getElementById("vaga-descricao");
+  const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
 
+  const novaVaga = new Vaga(tituloDaVaga.value, descricaoDaVaga.value, remuneracaoDaVaga.value);
+  
+  try {
+    if(tituloDaVaga.value == "" || descricaoDaVaga.value == "" || remuneracaoDaVaga.value == "") throw "Preencha todos os campos";
+    await axios.post(`${URL_VAGAS}`, novaVaga);
+    alert("Vaga cadastrada com sucesso!");
+  }
+  catch (error) {
+   alert(error);
+  };
+
+  mudarModalCadastrarVagas();
+};
+
+// VERIFICAÇÕES
 function verificarLetras1(){
   let texto=document.getElementById("cadastro-nome").value;
   for (letra of texto){
@@ -270,26 +290,7 @@ function verificarLetras4(){
 }
 
 
-const cadastrarNovaVaga = async (event) => {
-  event.preventDefault();
 
-  const tituloDaVaga = document.getElementById("titulo-vaga");
-  const descricaoDaVaga = document.getElementById("vaga-descricao");
-  const remuneracaoDaVaga = document.getElementById("vaga-remuneracao");
-
-  const novaVaga = new Vaga(tituloDaVaga.value, descricaoDaVaga.value, remuneracaoDaVaga.value);
-  
-  try {
-    if(tituloDaVaga.value == "" || descricaoDaVaga.value == "" || remuneracaoDaVaga.value == "") throw "Preencha todos os campos";
-    await axios.post(`${URL_VAGAS}`, novaVaga);
-    alert("Vaga cadastrada com sucesso!");
-  }
-  catch (error) {
-   alert(error);
-  };
-
-  mudarModalCadastrarVagas();
-};
 
 //EXIBIR VAGAS
 const exibirTodasAsVagas = async () => {
@@ -386,7 +387,6 @@ async function candidatarVaga(idDaVaga){
   })
 
   await axios.put(`${URL_USUARIOS}/${usuarioAtivoId}`, candidaturaUsuario[0])
-
   await axios.put(`${URL_VAGAS}/${idDaVaga}`, conteudo[0])
 };
 
@@ -399,6 +399,7 @@ async function exibeTelaCadastradoNaVaga(idDaVaga){
   const salarioVaga = document.getElementById('salario-vaga-candidatado');
   const tituloVaga = document.getElementById('titulo-vaga-candidatado');
   const descricaoVaga = document.getElementById('descricao-candidato-candidatado');
+  const cancelarCandidatura = document.getElementById('cancelar-candidatura');
 
   vagas.filter((detalhes) => {
     if(detalhes.id === idDaVaga){
@@ -408,6 +409,8 @@ async function exibeTelaCadastradoNaVaga(idDaVaga){
       descricaoVaga.innerHTML = `<b>Descrição da vaga:</b> ${detalhes.descricao}`;
     };
   });
+
+  cancelarCandidatura.setAttribute("onclick", `cancelarCandidatura(${idDaVaga})`)
 
   buscarCandidatos(idDaVaga)
   mudarModalCandidatadoNaVaga()
@@ -484,7 +487,7 @@ async function exibeDetalhesRecrutador(idDaVaga){
               nascimentoTres.classList.add('data-de-nascimento');
               const buttonReprovar = document.createElement('button');
               buttonReprovar.classList.add('button-aprovado-cadastrar-vaga');
-              buttonReprovar.setAttribute('onclick', `reprovarCandidato("${user.id}", ${user.id})`);
+              buttonReprovar.setAttribute('onclick', `reprovarCandidato("${user.id}", ${idDaVaga})`);
               buttonReprovar.innerText = "Reprovar";
 
               divPaiTres.appendChild(nomeUsuarioTres);
@@ -510,21 +513,46 @@ async function reprovarCandidato(userClicadoId, idDaVaga) {
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
   
   let usuarioClicado = users.filter((user) => {
-    return user.id === userClicadoId
-  })
-  let vagaParaDeletar = usuarioClicado[0].candidaturas.filter((vaga) => {
-    return vaga.idVaga === idDaVaga
-  })
+    return user.id === Number(userClicadoId);
+  });
 
-  let vagaTeste = usuarioClicado[0].candidaturas.filter((vaga) => {
-    if(vaga.idVaga === idDaVaga){
-      vaga = vaga.reprovado = true;
-      return vaga
+  let todasCandidaturasUsuario = usuarioClicado[0].candidaturas
+
+  console.log(todasCandidaturasUsuario);
+
+  todasCandidaturasUsuario.filter((candidatura) => {
+    if(candidatura.idVaga === idDaVaga){
+      candidatura.reprovado = true
     }
   })
 
-  await axios.put(`${URL_USUARIOS}/${usuarioClicado[0].id}`, vagaTeste[0])
-}
+  console.log(todasCandidaturasUsuario)
+
+  await axios.patch(`${URL_USUARIOS}/${usuarioClicado[0].id}`, {candidaturas: todasCandidaturasUsuario});
+};
+
+async function cancelarCandidatura(idDaVaga) {
+  let vagas;
+  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
+
+  let users;
+  await axios.get(URL_USUARIOS).then((response) => {users = response.data});
+ 
+  let acessarVagaClicada = vagas.filter((vaga) => {
+      return vaga.id === idDaVaga
+  });
+
+  
+
+  let candidatosDaVagaAcessada = acessarVagaClicada[0].candidatos
+  let indexDoCandidatoCancelado = candidatosDaVagaAcessada.indexOf(usuarioAtivoId);
+
+  candidatosDaVagaAcessada.splice(indexDoCandidatoCancelado, 1)
+
+  
+ await axios.patch(`${URL_VAGAS}/${idDaVaga}`, {candidatos: candidatosDaVagaAcessada});
+
+};
 
 const deletarVaga = async (idDaVaga) => {
   try {

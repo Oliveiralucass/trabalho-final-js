@@ -8,9 +8,19 @@
       "senha": "123",
       "candidaturas": [
         {
+          "idVaga": 1,
+          "idCandidato": 1,
+          "reprovado": false
+        },
+        {
           "idVaga": 2,
           "idCandidato": 1,
-          "reprovado": true
+          "reprovado": false
+        },
+        {
+          "idVaga": 2,
+          "idCandidato": 1,
+          "reprovado": false
         },
         {
           "idVaga": 1,
@@ -38,8 +48,8 @@
       "candidaturas": [
         {
           "idVaga": 2,
-          "idCandidato": 1,
-          "reprovado": true
+          "idCandidato": 3,
+          "reprovado": false
         },
         {
           "idVaga": 1,
@@ -56,7 +66,6 @@
       "descricao": "Saber mais que o Pedro",
       "remuneracao": "50000",
       "candidatos": [
-        1,
         3
       ],
       "id": 1
@@ -66,8 +75,8 @@
       "descricao": "Juninho",
       "remuneracao": "1000",
       "candidatos": [
-        1,
-        3
+        3,
+        1
       ],
       "id": 2
     }
