@@ -7,6 +7,7 @@
     <title>Jobr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="../style.css" />
+    <link rel="shortcut icon" href="#">
   </head>
   <body style="background-color: aliceblue;">
      <section id="section-rec-1" class="section-dois container mt-3 p-3">
@@ -24,11 +25,11 @@
       <div class="container w-50 rounded-4 ps-5 pe-5 pt-4 cadastra-vaga-padding" style="background-color: white;">
         <form class="form-cadastro">
           <label for="titulo-vaga">Título da vaga:</label>
-          <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control">
+          <input id="titulo-vaga" type="text" placeholder="Exemplo: QA Jr" class="form-control" onchange="verificarLetras2()">
           <label for="vaga-descricao">Descrição da vaga:</label>
-          <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control">
+          <input id="vaga-descricao" type="text" placeholder="Exemplo: Automatizar testes..." class="form-control" onchange="verificarLetras3()">
           <label for="vaga-remuneracao">Remuneração inicial:</label>
-          <input id="vaga-remuneracao" type="number" placeholder="Exemplo: R$ 5000" class="form-control">
+          <input id="vaga-remuneracao" type="number" placeholder="Exemplo: 5000 (apenas números)" class="form-control" onchange="verificarLetras3()">
           <button type="submit" class="form-control mt-4" onclick="cadastrarNovaVaga(event)">Criar vaga</button>
         </form>
       </div>
