@@ -522,6 +522,7 @@ async function reprovarCandidato(userClicadoId, idDaVaga) {
   todasCandidaturasUsuario.filter((candidatura) => {
     if(candidatura.idVaga === idDaVaga){
       candidatura.reprovado = true
+      console.log(candidatura);
     }
   })
 
@@ -541,8 +542,28 @@ async function cancelarCandidatura(idDaVaga) {
 
   candidatosDaVagaAcessada.splice(indexDoCandidatoCancelado, 1)
 
+ // fuhasduifhauisdhfuipasdhfuipashdufhasdfhuias
+
+ let users;
+ await axios.get(URL_USUARIOS).then((response) => { users = response.data });
+
+  let acessarUserAtivo = users.filter((user) =>{
+   return user.id == usuarioAtivoId
+  })
+
+  let vagaArray = acessarUserAtivo[0].candidaturas
+  let indexDaCandidaturaCancelada = vagaArray.indexOf(idDaVaga);
+
+  let novoArrayDeCandidatura = vagaArray.splice(indexDaCandidaturaCancelada, 1)
+
+  await axios.patch(`${URL_USUARIOS}/${usuarioAtivoId}`, {candidaturas: novoArrayDeCandidatura});
+
   await axios.patch(`${URL_VAGAS}/${idDaVaga}`, {candidatos: candidatosDaVagaAcessada});
 };
+
+
+
+
 
 const deletarVaga = async (idDaVaga) => {
   try {
