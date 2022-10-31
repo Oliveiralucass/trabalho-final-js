@@ -143,10 +143,21 @@ async function cadastrarUsuario(event){
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
   let verificaEmail = users.map((user) => { if(user.email === cadastroEmail.value) return true });
+  
+
 
   try {
     if(tipoUsuario.value == "" || cadastroNome.value == "" || cadastroDate.value == null || cadastroEmail.value == "" || cadastroSenha.value == "") throw "Preencha todos os campos";
     if(verificaEmail.includes(true)) throw "Email já está cadastrado";
+
+    function validarEmail(email) {
+      let re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+
+    if (!validarEmail(cadastroEmail.value)) throw "Email inválido";
+
+ 
     await axios.post(`${URL_USUARIOS}`, novoUsuario);
     alert("Cadastrado com sucesso");
   } catch(err) {
@@ -155,6 +166,109 @@ async function cadastrarUsuario(event){
 
   mudarModalCadastro();
 };
+
+
+
+function verificarLetras1(){
+  let texto=document.getElementById("cadastro-nome").value;
+  for (letra of texto){
+      if (!isNaN(texto)){
+          alert("Digite apenas letras!");
+          document.getElementById("cadastro-nome").value="";
+          return;
+      }
+
+      letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+
+      let ok=false;
+      for (letra2 of letraspermitidas ){
+          if (letra==letra2){
+              ok=true;
+          }
+       }
+       if (!ok){
+          alert("Não digite caracteres que não sejam letras ou espaços");
+          document.getElementById("cadastro-nome").value="";
+          return; 
+       }
+  }
+}
+
+function verificarLetras2(){
+  let texto=document.getElementById("titulo-vaga").value;
+  for (letra of texto){
+      if (!isNaN(texto)){
+          alert("Digite apenas letras!");
+          document.getElementById("titulo-vaga").value="";
+          return;
+      }
+
+      letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+
+      let ok=false;
+      for (letra2 of letraspermitidas ){
+          if (letra==letra2){
+              ok=true;
+          }
+       }
+       if (!ok){
+          alert("Não digite caracteres que não sejam letras ou espaços");
+          document.getElementById("titulo-vaga").value="";
+          return; 
+       }
+  }
+}
+
+function verificarLetras3(){
+  let texto=document.getElementById("vaga-descricao").value;
+  for (letra of texto){
+      if (!isNaN(texto)){
+          alert("Digite apenas letras!");
+          document.getElementById("vaga-descricao").value="";
+          return;
+      }
+
+      letraspermitidas="ABCEDFGHIJKLMNOPQRSTUVXWYZ abcdefghijklmnopqrstuvxwyzáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ"
+
+      let ok=false;
+      for (letra2 of letraspermitidas ){
+          if (letra==letra2){
+              ok=true;
+          }
+       }
+       if (!ok){
+          alert("Não digite caracteres que não sejam letras ou espaços");
+          document.getElementById("vaga-descricao").value="";
+          return; 
+       }
+  }
+}
+
+function verificarLetras4(){
+  let texto=document.getElementById("vaga-descricao").value;
+  for (letra of texto){
+      if (isNaN(texto)){
+          alert("Digite apenas números");
+          document.getElementById("vaga-descricao").value="";
+          return;
+      }
+
+      letraspermitidas="123456789"
+
+      let ok=false;
+      for (letra2 of letraspermitidas ){
+          if (letra==letra2){
+              ok=true;
+          }
+       }
+       if (!ok){
+          alert("Não digite caracteres que não sejam numeros");
+          document.getElementById("vaga-descricao").value="";
+          return; 
+       }
+  }
+}
+
 
 const cadastrarNovaVaga = async (event) => {
   event.preventDefault();
