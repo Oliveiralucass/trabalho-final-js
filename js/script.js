@@ -440,14 +440,6 @@ async function buscarCandidatos(idDaVaga) {
               divPai.appendChild(nascimento);
               container.appendChild(divPai);
     
-/*
-let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
-          let x = re.exec(user.dataDeNascimento);
-          nomeUsuarioTres.innerText = user.nomeCompleto;
-          nascimentoTres.innerText = x[3] + "/" + x[2] + "/" + x[1];
-
-
-*/
               let re = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/;
               let x = re.exec(user.dataDeNascimento);
               nomeUsuario.innerText = user.nomeCompleto;
@@ -518,9 +510,6 @@ async function exibeDetalhesRecrutador(idDaVaga){
 }
 
 async function reprovarCandidato(userClicadoId, idDaVaga) {
-  let vagas;
-  await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
-
   let users;
   await axios.get(URL_USUARIOS).then((response) => {users = response.data});
   
@@ -530,15 +519,11 @@ async function reprovarCandidato(userClicadoId, idDaVaga) {
 
   let todasCandidaturasUsuario = usuarioClicado[0].candidaturas
 
-  console.log(todasCandidaturasUsuario);
-
   todasCandidaturasUsuario.filter((candidatura) => {
     if(candidatura.idVaga === idDaVaga){
       candidatura.reprovado = true
     }
   })
-
-  console.log(todasCandidaturasUsuario)
 
   await axios.patch(`${URL_USUARIOS}/${usuarioClicado[0].id}`, {candidaturas: todasCandidaturasUsuario});
 };
@@ -547,23 +532,16 @@ async function cancelarCandidatura(idDaVaga) {
   let vagas;
   await axios.get(URL_VAGAS).then((response) => { vagas = response.data });
 
-  let users;
-  await axios.get(URL_USUARIOS).then((response) => {users = response.data});
- 
   let acessarVagaClicada = vagas.filter((vaga) => {
       return vaga.id === idDaVaga
   });
-
-  
 
   let candidatosDaVagaAcessada = acessarVagaClicada[0].candidatos
   let indexDoCandidatoCancelado = candidatosDaVagaAcessada.indexOf(usuarioAtivoId);
 
   candidatosDaVagaAcessada.splice(indexDoCandidatoCancelado, 1)
 
-  
- await axios.patch(`${URL_VAGAS}/${idDaVaga}`, {candidatos: candidatosDaVagaAcessada});
-
+  await axios.patch(`${URL_VAGAS}/${idDaVaga}`, {candidatos: candidatosDaVagaAcessada});
 };
 
 const deletarVaga = async (idDaVaga) => {
